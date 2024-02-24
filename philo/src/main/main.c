@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/24 01:53:26 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/24 02:00:04 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	no_philo_must_eat(int ac, char **av)
 {
-	printf("(no_philo_must_eat)%d %s\n", ac, *av);
+
 }
 
 void	philo_must_eat(int ac, char **av)
 {
-	printf("(philo_must_eat)%d %s\n", ac, *av);
+
 }
 
 int main(int ac, char **av)
@@ -30,7 +30,7 @@ int main(int ac, char **av)
 		philo_must_eat(ac, av);
 	else
 	{
-		printf("(Wrong arguments)%d\n", ac);
+		printf("(Wrong arguments)\n");
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
