@@ -39,10 +39,10 @@ OBJ = obj
 HEADERS = $(addprefix $(INC)/, philo.h)
 
 # files path #
-
+MAIN = $(SRC)/main/
 
 # files mandatory #
-CFILES = $(addprefix $(SRC)/, file1.c file2.c file3.c)
+CFILES = $(addprefix $(MAIN), main.c)
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
 VAL_TXT = valgrind-out.txt
