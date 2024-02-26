@@ -42,7 +42,7 @@ HEADERS = $(addprefix $(INC)/, philo.h)
 MAIN = $(SRC)/main/
 
 # files mandatory #
-CFILES = $(addprefix $(MAIN), main.c)
+CFILES = $(addprefix $(MAIN), main.c first_check.c)
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
 VAL_TXT = valgrind-out.txt
