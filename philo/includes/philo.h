@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 19:11:15 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:22:36 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <pthread.h>
 
 /**
  * for definitions and types
@@ -29,6 +30,7 @@
 # include <stddef.h>
 # include <limits.h>
 # include <inttypes.h>
+# include <errno.h>
 
 # define YELLOW "\033[1;33m"
 # define GREEN "\033[1;32m"
@@ -45,7 +47,7 @@ enum	e_philo
 	MAX_PHILO = 200
 };
 
-typedef enum	e_mtx
+typedef enum e_mtx
 {
 	CREATE,
 	INIT,
@@ -98,6 +100,9 @@ void	run(int ac, char **av);
 long	ft_atol(const char *nptr);
 
 /* wrapper functions */
-void	*safe_malloc(size_t bytes)
+void	*safe_malloc(size_t bytes);
 
-#endif // !PHILO_H
+/* function to error */
+void	error_exit(const char *message);
+
+#endif //!PHILO_H
