@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 18:31:13 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:11:15 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ enum	e_philo
 	MAX_PHILO = 200
 };
 
+typedef enum	e_mtx
+{
+	CREATE,
+	INIT,
+	LOCK,
+	UNLOCK,
+	DESTROY,
+	DETACH
+}	t_code;
+
 typedef pthread_mutex_t	t_mtx;
 typedef struct s_philo	t_philo;
 
@@ -58,10 +68,10 @@ typedef struct s_table
 {
 	int		ph_nb;
 	int		max_meals;
-	double	eat;
-	double	sleep;
-	double	die;
-	double	start;
+	long	eat;
+	long	sleep;
+	long	die;
+	long	start;
 	bool	end;
 	t_fork	*fork;
 	t_philo	*philo;
@@ -81,9 +91,13 @@ struct s_philo
 
 /* entrance function */
 void	check(int ac, char **av);
+void	init(t_table *table);
 void	run(int ac, char **av);
 
 /* utils */
 long	ft_atol(const char *nptr);
+
+/* wrapper functions */
+void	*safe_malloc(size_t bytes)
 
 #endif // !PHILO_H
