@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 14:36:16 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:31:13 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,38 +45,45 @@ enum	e_philo
 	MAX_PHILO = 200
 };
 
-typedef struct s_time
-{
-	double	eat;
-	double	sleep;
-	double	die;
-}	t_time;
+typedef pthread_mutex_t	t_mtx;
+typedef struct s_philo	t_philo;
 
 typedef struct s_fork
 {
-	int	right;
-	int	left;
+	int		id;
+	t_mtx	fork;
 }	t_fork;
-
-typedef struct s_philo
-{
-	t_time	*time;
-	t_fork	*fork;
-}	t_philo;
 
 typedef struct s_table
 {
-	int		pos;
-	t_philo	*philo[MAX_PHILO];
-	t_time	*time;
-
+	int		ph_nb;
+	int		max_meals;
+	double	eat;
+	double	sleep;
+	double	die;
+	double	start;
+	bool	end;
+	t_fork	*fork;
+	t_philo	*philo;
 }	t_table;
+
+struct s_philo
+{
+	int			id;
+	bool		full;
+	long		meals;
+	long		last_meal;
+	t_fork		*left;
+	t_fork		*right;
+	pthread_t	th_id;
+	t_table		table;
+};
 
 /* entrance function */
 void	check(int ac, char **av);
 void	run(int ac, char **av);
 
 /* utils */
-int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 
 #endif // !PHILO_H

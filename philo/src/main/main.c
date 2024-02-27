@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/26 21:35:50 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:55:15 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	main(int ac, char **av)
 {
 	check(ac, av);
-	run (ac, av);
+	// run (ac, av);
 	return (EXIT_SUCCESS);
 }

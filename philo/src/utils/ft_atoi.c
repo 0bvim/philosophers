@@ -6,13 +6,13 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:59:35 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 13:29:41 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:28:05 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-static int	ft_atoi_recursive(const char *string, int sign, int nb)
+static long	ft_atoi_recursive(const char *string, long sign, long nb)
 {
 	if (*string == '\0')
 		return (nb * sign);
@@ -32,7 +32,7 @@ static int	ft_atoi_recursive(const char *string, int sign, int nb)
 	return (nb * sign);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	return (ft_atoi_recursive(nptr, 1, 0));
 }
