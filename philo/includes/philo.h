@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/26 01:18:49 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/26 22:51:47 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,31 +49,26 @@ typedef struct s_time
 
 typedef struct s_fork
 {
-	int	fork;
+	int	right;
+	int	left;
 }	t_fork;
-
-typedef struct s_table
-{
-	int	idkyet;
-}	t_table;
 
 typedef struct s_philo
 {
 	t_time	*time;
 	t_fork	*fork;
-	t_table	*table;
 }	t_philo;
 
-typedef struct s_all
+typedef struct s_table
 {
-	size_t			ph_qty;
-	t_philo			philo;
-	pthread_t		th;
-	pthread_mutex_t	mutex;
-}	t_all;
+	int		ph_qty;
+	t_philo	*philo;
+	t_time	*time;
+
+}	t_table;
 
 /* entrance function */
-void	print_helper(void);
-void	check_and_run(int ac, char **av);
+void	check(int ac, char **av);
+void	run(int ac, char **av);
 
 #endif // !PHILO_H

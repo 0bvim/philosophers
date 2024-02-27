@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/26 21:35:50 by vde-frei         ###   ########.fr       */
+/*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
+/*   Updated: 2024/02/26 22:53:01 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	main(int ac, char **av)
+static void	philo_must_eat_off(int ac, char **av);
+static void	philo_must_eat_on(int ac, char **av);
+
+void	run(int ac, char **av)
 {
-	check(ac, av);
-	run (ac, av);
-	return (EXIT_SUCCESS);
+	philo_must_eat_on(ac, av);
+	philo_must_eat_off(ac, av);
+}
+
+static void	philo_must_eat_on(int ac, char **av)
+{
+	(void)ac;
+	(void)av;
+}
+
+static void	philo_must_eat_off(int ac, char **av)
+{
+	(void)ac;
+	(void)av;
 }
