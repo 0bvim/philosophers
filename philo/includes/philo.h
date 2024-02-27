@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/26 22:51:47 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:36:16 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@
 # define MAGENTA "\033[95m"
 # define LRED "\033[91m"
 
+enum	e_philo
+{
+	MAX_PHILO = 200
+};
+
 typedef struct s_time
 {
 	double	eat;
@@ -61,8 +66,8 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	int		ph_qty;
-	t_philo	*philo;
+	int		pos;
+	t_philo	*philo[MAX_PHILO];
 	t_time	*time;
 
 }	t_table;
@@ -70,5 +75,8 @@ typedef struct s_table
 /* entrance function */
 void	check(int ac, char **av);
 void	run(int ac, char **av);
+
+/* utils */
+int		ft_atoi(const char *nptr);
 
 #endif // !PHILO_H

@@ -40,9 +40,11 @@ HEADERS = $(addprefix $(INC)/, philo.h)
 
 # files path #
 MAIN = $(SRC)/main/
+UTILS = $(SRC)/utils/
 
 # files mandatory #
 CFILES = $(addprefix $(MAIN), main.c first_check.c run.c)
+CFILES += $(addprefix $(UTILS), ft_atoi.c)
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
 VAL_TXT = valgrind-out.txt
