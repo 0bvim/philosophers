@@ -1,0 +1,97 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/main/main.o",
+      "src/main/main.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/main/main.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/main/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/main/first_check.o",
+      "src/main/first_check.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/main/first_check.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/main/first_check.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/main/init.o",
+      "src/main/init.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/main/init.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/main/init.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/main/run.o",
+      "src/main/run.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/main/run.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/main/run.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/utils/ft_atoi.o",
+      "src/utils/ft_atoi.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/ft_atoi.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/ft_atoi.o"
+  }
+]

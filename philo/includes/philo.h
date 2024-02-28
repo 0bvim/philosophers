@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 21:09:50 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 22:30:53 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ long	ft_atol(const char *nptr);
 
 /* wrapper functions */
 void	*safe_malloc(size_t bytes);
+void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
+			void *data, t_code opcode);
+void	safe_mtx_handle(t_mtx *mutex, t_code opcode);
 
 /* function to error */
 void	error_exit(const char *message);
