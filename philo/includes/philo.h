@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/28 00:19:32 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:52:58 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ typedef struct s_table
 	long	die;
 	long	start;
 	bool	end;
+	bool	all_up;
+	t_mtx	*table_mtx;
 	t_fork	*fork;
 	t_philo	*philo;
 }	t_table;
@@ -87,8 +89,8 @@ struct s_philo
 	long		last_meal;
 	t_fork		*first_fork;
 	t_fork		*second_fork;
-	pthread_t	th_id;
 	t_table		*table;
+	pthread_t	th_id;
 };
 
 /* entrance function */

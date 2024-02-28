@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/28 00:16:04 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:53:06 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init(t_table *table)
 	table->end = false;
 	table->philo = safe_malloc(sizeof(t_philo) * table->ph_nb);
 	table->fork = safe_malloc(sizeof(t_fork) * table->ph_nb);
+	safe_mtx_handle(table->table_mtx, INIT);
 	while (++i < table->ph_nb)
 	{
 		safe_mtx_handle(&table->fork[i].fork, INIT);

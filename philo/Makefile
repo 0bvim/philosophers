@@ -43,7 +43,7 @@ MAIN = $(SRC)/main/
 UTILS = $(SRC)/utils/
 
 # files mandatory #
-CFILES = $(addprefix $(MAIN), main.c first_check.c init.c run.c)
+CFILES = $(addprefix $(MAIN), main.c first_check.c init.c dinner.c)
 CFILES += $(addprefix $(UTILS), ft_atoi.c error_exit.c wrapper_functions.c)
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
