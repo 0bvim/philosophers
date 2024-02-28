@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 20:22:36 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:09:50 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef enum e_mtx
 	LOCK,
 	UNLOCK,
 	DESTROY,
-	DETACH
+	DETACH,
+	JOIN
 }	t_code;
 
 typedef pthread_mutex_t	t_mtx;
