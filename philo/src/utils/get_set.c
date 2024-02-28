@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 00:55:56 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/28 01:09:45 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/28 01:30:40 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	set_bool(t_mtx *mtx, bool *dst, bool value)
 bool	get_bool(t_mtx *mtx, bool *value)
 {
 	bool	ret;
+
 	safe_mtx_handle(mtx, LOCK);
 	ret = *value;
 	safe_mtx_handle(mtx, UNLOCK);
@@ -64,6 +65,7 @@ void	set_long(t_mtx *mtx, long *dst, long value)
 long	get_long(t_mtx *mtx, long *value)
 {
 	long	ret;
+
 	safe_mtx_handle(mtx, LOCK);
 	ret = *value;
 	safe_mtx_handle(mtx, UNLOCK);
