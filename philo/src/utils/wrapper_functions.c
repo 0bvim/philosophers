@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:46:26 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 21:53:10 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/27 22:08:11 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	*safe_malloc(size_t bytes)
 }
 
 /**
- * @brief Function to verify errors about mutex.
- * @param status Return status of functions.
+ * @brief Function to verify errors about thread.
+ * @param status Return status of functions <CREATE> <JOIN> DETACH>.
  * @param opcode Code defined in enum for operations.
  * @return This function does not return.
  */
@@ -54,8 +54,10 @@ static void	handle_thread_error(int status, t_code opcode)
 
 /**
  * @brief Function to handle threads
- * @param status Return status of functions.
- * @param opcode Code defined in enum for operations.
+ * @param thread Thread to be handled.
+ * @param *(*foo) Function pointer of routine.
+ * @param Data Struct with variables to operations.
+ * @param opcode Operation code of action.
  * @return This function does not return.
  */
 void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
