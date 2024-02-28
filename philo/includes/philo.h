@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 22:30:53 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:19:32 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # include <stdbool.h>
 # include <stddef.h>
 # include <limits.h>
-# include <inttypes.h>
 # include <errno.h>
 
 # define YELLOW "\033[1;33m"
@@ -86,10 +85,10 @@ struct s_philo
 	bool		full;
 	long		meals;
 	long		last_meal;
-	t_fork		*left;
-	t_fork		*right;
+	t_fork		*first_fork;
+	t_fork		*second_fork;
 	pthread_t	th_id;
-	t_table		table;
+	t_table		*table;
 };
 
 /* entrance function */

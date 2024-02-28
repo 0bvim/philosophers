@@ -93,5 +93,43 @@
     "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
     "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/ft_atoi.c",
     "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/ft_atoi.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/utils/error_exit.o",
+      "src/utils/error_exit.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/error_exit.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/error_exit.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/utils/wrapper_functions.o",
+      "src/utils/wrapper_functions.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/wrapper_functions.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/wrapper_functions.o"
   }
 ]
