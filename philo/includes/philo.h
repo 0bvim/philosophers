@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 11:05:23 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:42:40 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_table
 	bool	end;
 	bool	all_up;
 	t_mtx	table_mtx;
+	t_mtx	write_mtx;
 	t_fork	*fork;
 	t_philo	*philo;
 }	t_table;
@@ -108,6 +109,7 @@ void	run(int ac, char **av);
 /* utils */
 long	ft_atol(const char *nptr);
 long	gettime(t_time_code time_code);
+void	precise_usleep(long usec, t_table *table);
 
 /* wrapper functions */
 void	*safe_malloc(size_t bytes);

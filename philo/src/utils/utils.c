@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 11:27:55 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:42:20 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,30 @@ void	error_exit(const char *message)
 	exit (EXIT_FAILURE);
 }
 
+/*
+ * @brief Function to get more precise time than usleep.
+ * param usec Time to adjust.
+ * param table Struct with all information.
+ * return Does not return a value.
+ **/
+void	precise_usleep(long usec, t_table *table)
+{
+	long	start;
+	long	elapsed;
+	long	remaining;
+
+	start = gettime(MICROSEC);
+	while (gettime(MICROSEC) - start < usec)
+	{
+		if (simulation_status(table))
+			break ;
+		elapsed = gettime(MICROSEC) - start;
+		remaining = usec - elapsed;
+		if (remaining > 1e3)
+			usleep(remaining / 2);
+		else
+			while (gettime(MICROSEC) - start < usec)
+				;
+	}
+}
 

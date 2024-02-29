@@ -68,11 +68,106 @@
       "-flto",
       "-c",
       "-o",
-      "obj/src/main/dinner.o",
-      "src/main/dinner.c"
+      "obj/src/dinner/dinner.o",
+      "src/dinner/dinner.c"
     ],
     "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
-    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/main/dinner.c",
-    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/main/dinner.o"
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/dinner/dinner.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/dinner/dinner.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/dinner/synchro.o",
+      "src/dinner/synchro.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/dinner/synchro.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/dinner/synchro.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/dinner/write.o",
+      "src/dinner/write.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/dinner/write.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/dinner/write.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/utils/ft_atoi.o",
+      "src/utils/ft_atoi.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/ft_atoi.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/ft_atoi.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/utils/utils.o",
+      "src/utils/utils.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/utils.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-fsanitize=thread",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/utils/wrapper_functions.o",
+      "src/utils/wrapper_functions.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/wrapper_functions.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/wrapper_functions.o"
   }
 ]
