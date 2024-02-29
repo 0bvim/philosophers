@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 10:44:41 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:49:50 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ long	gettime(t_time_code time_code)
 	if (SECOND == time_code)
 		return (tv.tv_sec + (tv.tv_usec / 1e6));
 	else if (MILLISEC == time_code)
-		return(tv.tv_usec);
-	return 0;
+		return ((tv.tv_sec * 1e3) + (tv.tv_usec / 1e3));
+	else if (MICROSEC == time_code)
+		return ((tv.tv_sec * 1e6) + tv.tv_usec);
+	else
+		error_exit("Wrong input to gettime");
+	return (42);
 }
 
 /*
