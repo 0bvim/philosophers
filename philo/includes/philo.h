@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 12:09:26 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:43:28 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@
 # define MAG "\033[95m"
 # define LRED "\033[91m"
 
-/* MAX PHILO NUMBER */
+/* ANOTHER ENUMS */
 enum	e_philo
 {
-	MAX_PHILO = 200
+	DEBUG_MODE,
+	MAX_PHILO = 200,
 };
 
 /* PHILO STATUS */
@@ -145,5 +146,6 @@ bool	simulation_status(t_table *table);
 void	wait_all_threads(t_table *table);
 void	dinner_start(t_table *table);
 void	*dinner_simulation(void *data);
+void	write_status(t_philo_status status, t_philo *philo, bool debug);
 
 #endif //!PHILO_H

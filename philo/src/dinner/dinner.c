@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 11:53:51 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:42:32 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	*dinner_simulation(void *data)
 	{
 		if (philo->full)
 			break ;
+		write_status(SLEEPING, philo, DEBUG_MODE);
 	}
 	return (NULL);
 }
