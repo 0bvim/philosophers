@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 11:42:40 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:52:51 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,24 @@
 # define MAGENTA "\033[95m"
 # define LRED "\033[91m"
 
+/* MAX PHILO NUMBER */
 enum	e_philo
 {
 	MAX_PHILO = 200
 };
 
+/* PHILO STATUS */
+typedef enum e_philo_status
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
+	DIED,
+}	t_philo_status;
+
+/* MUTEX HANDLE */
 typedef enum e_mtx
 {
 	CREATE,
@@ -57,6 +70,7 @@ typedef enum e_mtx
 	JOIN
 }	t_code;
 
+/* HANDLE TIME */
 typedef enum e_time_code
 {
 	SECOND,
