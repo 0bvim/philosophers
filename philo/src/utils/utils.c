@@ -6,12 +6,17 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 10:49:50 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:27:55 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
+/*
+ * @brief Function to get current time and convert.
+ * param time_code Code of which kind of value wanna get.
+ * return long Value converted.
+ **/
 long	gettime(t_time_code time_code)
 {
 	struct timeval	tv;
@@ -39,3 +44,5 @@ void	error_exit(const char *message)
 	printf(RED"%s"RESET"\n", message);
 	exit (EXIT_FAILURE);
 }
+
+

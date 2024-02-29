@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 10:43:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:05:23 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ bool	simulation_status(t_table *table);
 /* dinner */
 void	wait_all_threads(t_table *table);
 void	dinner_start(t_table *table);
+void	*dinner_simulation(void *data);
 
 #endif //!PHILO_H

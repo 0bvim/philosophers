@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 22:47:53 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:07:25 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	main(int ac, char **av)
 {
-	// t_table	*table;
+	t_table	*table;
 
 	check(ac, av);
-	// init(table);
+	init(table);
+	(void)table;
 	return (EXIT_SUCCESS);
 }

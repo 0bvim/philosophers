@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 10:28:53 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:24:50 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,27 @@ void	dinner_start(t_table *table)
 		while (++i < table->ph_nb)
 		{
 			safe_thread_handle(&table->philo[i].th_id, dinner_simulation,
-					  &table->philo[i], CREATE);
+				&table->philo[i], CREATE);
 		}
 	}
+	table->start = gettime(MILLISEC);
 	set_bool(&table->table_mtx, &table->all_up, true);
+	i = -1;
+	while (++i < table->ph_nb)
+		safe_thread_handle(&table->philo[i].th_id, NULL, NULL, JOIN);
 }
 
 void	*dinner_simulation(void *data)
 {
 	t_philo	*philo;
-	
+
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
+	while (simulation_status(philo->table))
+	{
+		if (philo->full)
+			break;
+		
+	}
 	return (NULL);
 }
