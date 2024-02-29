@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 13:04:18 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:13:49 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,8 @@ static void	eat(t_philo *philo)
 	philo->meals++;
 	write_status(EATING, philo, DEBUG_MODE);
 	precise_usleep(philo->table->eat, philo->table);
-	//TODO: stopped here 13223
+	if (philo->table->max_meals > 0 && philo->meals == philo->table->max_meals)
+		set_bool(&philo->philo_mtx, &philo->full, true);
+	safe_mtx_handle(&philo->first_fork->fork, UNLOCK);
+	safe_mtx_handle(&philo->second_fork->fork, UNLOCK);
 }
