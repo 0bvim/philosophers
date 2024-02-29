@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/28 00:52:58 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:59:40 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,12 @@ void	safe_mtx_handle(t_mtx *mutex, t_code opcode);
 
 /* function to error */
 void	error_exit(const char *message);
+
+/* get, set and verify functions */
+void	set_bool(t_mtx *mtx, bool *dst, bool value);
+bool	get_bool(t_mtx *mtx, bool *value);
+void	set_long(t_mtx *mtx, long *dst, long value);
+long	get_long(t_mtx *mtx, long *value);
+bool	simulation_status(t_table *table);
 
 #endif //!PHILO_H

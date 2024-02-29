@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 00:55:56 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/28 01:30:40 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:59:28 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,15 @@ long	get_long(t_mtx *mtx, long *value)
 	ret = *value;
 	safe_mtx_handle(mtx, UNLOCK);
 	return (ret);
+}
+
+/*
+ * @brief function to get value of end and verify if simulation ended.
+ * @param mtx Mutex variable to lock and unlock.
+ * @param value Value to get.
+ * @return The value.
+ **/
+bool	simulation_status(t_table *table)
+{
+	return (get_bool(table->table_mtx, &table->end));
 }

@@ -68,68 +68,11 @@
       "-flto",
       "-c",
       "-o",
-      "obj/src/main/run.o",
-      "src/main/run.c"
+      "obj/src/main/dinner.o",
+      "src/main/dinner.c"
     ],
     "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
-    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/main/run.c",
-    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/main/run.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-Wall",
-      "-Werror",
-      "-Wextra",
-      "-g3",
-      "-fsanitize=thread",
-      "-pedantic",
-      "-flto",
-      "-c",
-      "-o",
-      "obj/src/utils/ft_atoi.o",
-      "src/utils/ft_atoi.c"
-    ],
-    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
-    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/ft_atoi.c",
-    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/ft_atoi.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-Wall",
-      "-Werror",
-      "-Wextra",
-      "-g3",
-      "-fsanitize=thread",
-      "-pedantic",
-      "-flto",
-      "-c",
-      "-o",
-      "obj/src/utils/error_exit.o",
-      "src/utils/error_exit.c"
-    ],
-    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
-    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/error_exit.c",
-    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/error_exit.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-Wall",
-      "-Werror",
-      "-Wextra",
-      "-g3",
-      "-fsanitize=thread",
-      "-pedantic",
-      "-flto",
-      "-c",
-      "-o",
-      "obj/src/utils/wrapper_functions.o",
-      "src/utils/wrapper_functions.c"
-    ],
-    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo",
-    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/utils/wrapper_functions.c",
-    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/utils/wrapper_functions.o"
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo/src/main/dinner.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo/obj/src/main/dinner.o"
   }
 ]
