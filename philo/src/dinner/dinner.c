@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 12:59:14 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:04:18 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ static void	eat(t_philo *philo)
 	philo->meals++;
 	write_status(EATING, philo, DEBUG_MODE);
 	precise_usleep(philo->table->eat, philo->table);
-
+	//TODO: stopped here 13223
 }
