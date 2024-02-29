@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 12:43:28 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:53:25 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ struct s_philo
 	bool		full;
 	long		meals;
 	long		last_meal;
+	t_mtx		philo_mtx;
 	t_fork		*first_fork;
 	t_fork		*second_fork;
 	t_table		*table;

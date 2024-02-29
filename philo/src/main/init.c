@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 11:43:06 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:56:10 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	philo_init(t_table *table)
 		philo->full = false;
 		philo->last_meal = 0;
 		philo->table = table;
+		safe_mtx_handle(&philo->philo_mtx, INIT);
 		assign_forks (philo, table->fork, i);
 	}
 }
