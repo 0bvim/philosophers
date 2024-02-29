@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 11:52:51 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:09:26 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@
 # include <limits.h>
 # include <errno.h>
 
-# define YELLOW "\033[1;33m"
-# define GREEN "\033[1;32m"
+# define YLW "\033[1;33m"
+# define GRN "\033[1;32m"
 # define RED "\033[1;31m"
-# define ORANGE "\033[93m"
-# define BLUE "\033[94m"
-# define CYAN "\033[36m"
-# define RESET "\033[0m"
-# define MAGENTA "\033[95m"
+# define ORG "\033[93m"
+# define BLU "\033[94m"
+# define CYA "\033[36m"
+# define RST "\033[0m"
+# define MAG "\033[95m"
 # define LRED "\033[91m"
 
 /* MAX PHILO NUMBER */

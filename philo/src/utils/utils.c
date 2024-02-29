@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 11:53:17 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:37:43 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long	gettime(t_time_code time_code)
  **/
 void	error_exit(const char *message)
 {
-	printf(RED"%s"RESET"\n", message);
+	printf(RED"%s"RST"\n", message);
 	exit (EXIT_FAILURE);
 }
 
