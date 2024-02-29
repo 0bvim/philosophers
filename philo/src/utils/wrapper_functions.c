@@ -6,12 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:46:26 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/27 22:26:49 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:30:53 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
-#include <pthread.h>
 
 /**
  * @brief function to alloc memory safe.

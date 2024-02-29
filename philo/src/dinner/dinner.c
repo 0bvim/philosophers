@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/28 00:55:45 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:28:53 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	dinner_start(t_table *table)
 					  &table->philo[i], CREATE);
 		}
 	}
+	set_bool(&table->table_mtx, &table->all_up, true);
 }
 
 void	*dinner_simulation(void *data)
@@ -36,5 +37,6 @@ void	*dinner_simulation(void *data)
 	t_philo	*philo;
 	
 	philo = (t_philo *)data;
-	(void)philo;
+	wait_all_threads(philo->table);
+	return (NULL);
 }

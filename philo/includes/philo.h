@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 09:59:40 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:43:31 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ typedef enum e_mtx
 	JOIN
 }	t_code;
 
+typedef enum e_time_code
+{
+	SECOND,
+	MILLISEC,
+	MICROSEC,
+}	t_time_code;
+
 typedef pthread_mutex_t	t_mtx;
 typedef struct s_philo	t_philo;
 
@@ -76,7 +83,7 @@ typedef struct s_table
 	long	start;
 	bool	end;
 	bool	all_up;
-	t_mtx	*table_mtx;
+	t_mtx	table_mtx;
 	t_fork	*fork;
 	t_philo	*philo;
 }	t_table;
@@ -100,6 +107,7 @@ void	run(int ac, char **av);
 
 /* utils */
 long	ft_atol(const char *nptr);
+long	gettime(t_time_code time_code);
 
 /* wrapper functions */
 void	*safe_malloc(size_t bytes);
@@ -116,5 +124,9 @@ bool	get_bool(t_mtx *mtx, bool *value);
 void	set_long(t_mtx *mtx, long *dst, long value);
 long	get_long(t_mtx *mtx, long *value);
 bool	simulation_status(t_table *table);
+
+/* dinner */
+void	wait_all_threads(t_table *table);
+void	dinner_start(t_table *table);
 
 #endif //!PHILO_H
