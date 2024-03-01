@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 12:53:10 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:19:47 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,19 +90,20 @@ typedef struct s_fork
 
 typedef struct s_table
 {
-	int		ph_nb;
-	int		max_meals;
-	long	eat;
-	long	sleep;
-	long	die;
-	long	start;
-	bool	end;
-	bool	all_up;
-	long	th_nbr;
-	t_mtx	table_mtx;
-	t_mtx	write_mtx;
-	t_fork	*fork;
-	t_philo	*philo;
+	int			ph_nb;
+	int			max_meals;
+	long		eat;
+	long		sleep;
+	long		die;
+	long		start;
+	bool		end;
+	bool		all_up;
+	long		th_nbr;
+	t_mtx		table_mtx;
+	t_mtx		write_mtx;
+	t_fork		*fork;
+	t_philo		*philo;
+	pthread_t	monitor;
 }	t_table;
 
 struct s_philo
@@ -156,5 +157,7 @@ void	*lonely_day(void *arg);
 /* syncro */
 void	increase_long(t_mtx *mutex, long *value);
 void	unsync_philos(t_philo *philo);
+bool	threads_running(t_mtx *mtx, long *threads, long ph_nb);
+void	*monitor(void *data);
 
 #endif //!PHILO_H

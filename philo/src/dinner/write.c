@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:40:42 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 12:37:52 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:04:56 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	write_status(t_philo_status status, t_philo *philo, bool debug)
 	{
 		if ((TAKE_FIRST_FORK == status || TAKE_SECOND_FORK == status)
 			&& !simulation_status(philo->table))
-			printf(RED"%-6ld"RST"%d has taken a fork\n", elapsed, philo->id);
+			printf(RED"%-6ld""%d has taken a fork\n"RST, elapsed, philo->id);
 		else if (EATING == status && !simulation_status(philo->table))
-			printf(YLW"%-6ld"RST"%d is eating\n", elapsed, philo->id);
+			printf(YLW"%-6ld""%d is eating\n"RST, elapsed, philo->id);
 		else if (SLEEPING == status && !simulation_status(philo->table))
-			printf(CYA"%-6ld"RST"%d is sleeping\n", elapsed, philo->id);
+			printf(CYA"%-6ld""%d is sleeping\n"RST, elapsed, philo->id);
 		else if (THINKING == status && !simulation_status(philo->table))
-			printf(GRN"%-6ld"RST"%d is thinking\n", elapsed, philo->id);
+			printf(GRN"%-6ld""%d is thinking\n"RST, elapsed, philo->id);
 		else if (DIED == status && !simulation_status(philo->table))
 			printf(LRED"%-6ld %d died\n"RST, elapsed, philo->id);
 	}

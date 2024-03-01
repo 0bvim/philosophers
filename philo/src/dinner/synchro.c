@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:16:01 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 12:41:16 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:54:40 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,16 @@ void	unsync_philos(t_philo *philo)
 		if (philo->id % 2)
 			thinking(philo, true);
 	}
+}
+
+bool	threads_running(t_mtx *mtx, long *threads, long ph_nb)
+{
+	bool	ret;
+
+	ret = false;
+	safe_mtx_handle(mtx, LOCK);
+	if (*threads == ph_nb)
+		ret = true;
+	safe_mtx_handle(mtx, UNLOCK);
+	return (ret);
 }

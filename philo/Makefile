@@ -25,7 +25,7 @@ FCLEAN = Program delete
 COMP = Compiling
 
 # debug and normal flags #
-DFLAGS = -Wall -Wextra -Werror -g3 # TO DEBBUG
+DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread# TO DEBBUG
 CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=thread -pedantic -flto -MD -MP # FOR DEPENDENCIES
 LFLAGS = -march=native # TO OPTIMIZE FOR SPECIFIC ARCHITECTURE
 FFLAGS =  -lpthread -pthread # FLAGS THAT ONLY WORK AT THE END OF LINE (AFTER OBJECTS)
@@ -45,7 +45,7 @@ UTILS = $(SRC)/utils/
 
 # files mandatory #
 CFILES = $(addprefix $(MAIN), main.c first_check.c init.c parser.c)
-CFILES += $(addprefix $(DINNER), dinner.c synchro.c write.c)
+CFILES += $(addprefix $(DINNER), dinner.c synchro.c write.c monitor.c)
 CFILES += $(addprefix $(UTILS), ft_atoi.c utils.c wrapper_functions.c get_set.c)
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
