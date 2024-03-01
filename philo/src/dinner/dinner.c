@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 12:53:02 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:56:16 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	dinner_start(t_table *table)
 	if (0 == table->max_meals)
 		return ;
 	else if (1 == table->ph_nb)
-		;//TODO
+		safe_thread_handle(&table->philo[0].th_id, lonely_day, &table->philo[0] , CREATE);
 	else
 	{
 		while (++i < table->ph_nb)
