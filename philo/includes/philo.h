@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 23:51:10 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:53:10 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_table
 	long	start;
 	bool	end;
 	bool	all_up;
+	long	th_nbr;
 	t_mtx	table_mtx;
 	t_mtx	write_mtx;
 	t_fork	*fork;
@@ -149,5 +150,11 @@ void	wait_all_threads(t_table *table);
 void	dinner_start(t_table *table);
 void	*dinner_simulation(void *data);
 void	write_status(t_philo_status status, t_philo *philo, bool debug);
+void	thinking(t_philo *philo, bool pre_simulation);
+void	*lonely_day(void *arg);
+
+/* syncro */
+void	increase_long(t_mtx *mutex, long *value);
+void	unsync_philos(t_philo *philo);
 
 #endif //!PHILO_H

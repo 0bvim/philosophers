@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 23:55:00 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:44:58 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ int	main(int ac, char **av)
 	parser_input(&table, av);
 	init(&table);
 	dinner_start(&table);
-
 	return (EXIT_SUCCESS);
 }

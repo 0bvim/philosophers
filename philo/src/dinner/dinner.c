@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 18:13:49 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:53:02 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,17 @@ void	*dinner_simulation(void *data)
 
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
-	while (simulation_status(philo->table))
+	set_long(&philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
+	increase_long(&philo->table->table_mtx, &philo->table->th_nbr);
+	unsync_philos(philo);
+	while (!simulation_status(philo->table))
 	{
-		if (philo->full)
+		if (get_bool(&philo->philo_mtx, &philo->full))
 			break ;
 		eat(philo);
 		write_status(SLEEPING, philo, DEBUG_MODE);
 		precise_usleep(philo->table->sleep, philo->table);
+		thinking(philo, false);
 	}
 	return (NULL);
 }
@@ -69,4 +73,36 @@ static void	eat(t_philo *philo)
 		set_bool(&philo->philo_mtx, &philo->full, true);
 	safe_mtx_handle(&philo->first_fork->fork, UNLOCK);
 	safe_mtx_handle(&philo->second_fork->fork, UNLOCK);
+}
+
+void	thinking(t_philo *philo, bool pre_simulation)
+{
+	long	t_eat;
+	long	t_sleep;
+	long	t_think;
+	
+	if (!pre_simulation)
+		write_status(THINKING, philo, DEBUG_MODE);
+	if (philo->table->ph_nb % 2 == 0)
+		return ;
+	t_eat = philo->table->eat;
+	t_sleep = philo->table->sleep;
+	t_think = (t_eat * 2) - t_sleep;
+	if (t_think < 0)
+		t_think = 0;
+	precise_usleep(t_think * 0.42, philo->table);
+}
+
+void	*lonely_day(void *arg)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	wait_all_threads(philo->table);
+	set_long(&philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
+	increase_long(&philo->table->table_mtx, &philo->table->th_nbr);
+	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
+	while (!simulation_status(philo->table))
+		precise_usleep(200, philo->table);
+	return (NULL);
 }
