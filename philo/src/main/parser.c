@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 23:55:00 by vde-frei         ###   ########.fr       */
+/*   Created: 2024/02/29 23:46:20 by vde-frei          #+#    #+#             */
+/*   Updated: 2024/02/29 23:50:43 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	main(int ac, char **av)
+void	parser_input(t_table *table, char **av)
 {
-	t_table	table;
-
-	check(ac, av);
-	parser_input(&table, av);
-	init(&table);
-	dinner_start(&table);
-
-	return (EXIT_SUCCESS);
+	table->ph_nb = ft_atol(av[1]);
+	table->die = ft_atol(av[2]);
+	table->eat = ft_atol(av[3]);
+	table->sleep = ft_atol(av[4]);
+	if (av[5])
+		table->max_meals = ft_atol(av[5]);
+	else
+	 table->max_meals = -1;
 }

@@ -44,7 +44,7 @@ DINNER = $(SRC)/dinner/
 UTILS = $(SRC)/utils/
 
 # files mandatory #
-CFILES = $(addprefix $(MAIN), main.c first_check.c init.c)
+CFILES = $(addprefix $(MAIN), main.c first_check.c init.c parser.c)
 CFILES += $(addprefix $(DINNER), dinner.c synchro.c write.c)
 CFILES += $(addprefix $(UTILS), ft_atoi.c utils.c wrapper_functions.c get_set.c)
 

@@ -6,14 +6,14 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 12:56:10 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:59:28 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-static void	philo_init(t_table *table);
 static void	assign_forks(t_philo *philo, t_fork *fork, int position);
+static void	philo_init(t_table *table);
 
 /**
  * @brief function alloc structs.

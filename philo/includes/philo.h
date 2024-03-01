@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 12:53:25 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:51:10 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ struct s_philo
 
 /* entrance function */
 void	check(int ac, char **av);
+void	parser_input(t_table *table, char **av);
 void	init(t_table *table);
 void	run(int ac, char **av);
 
