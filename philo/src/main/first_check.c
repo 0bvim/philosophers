@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 00:19:21 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 12:13:28 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 03:04:19 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@ static bool	arg_validation(int ac, char **av);
 static bool	is_digit(char c);
 static bool	check_range(char **av);
 
+/**
+ * @brief Checks command-line arguments for validity.
+ *
+ * This function checks the command-line arguments for validity. If the number
+ * of arguments is either 5 or 6 and the arguments pass validation, it returns;
+ * otherwise, it prints the helper message and exits with failure.
+ *
+ * @param ac The number of command-line arguments.
+ * @param av An array of strings containing the command-line arguments.
+ */
 void	check(int ac, char **av)
 {
 	if ((5 == ac || 6 == ac) && arg_validation(ac, av))
@@ -25,6 +35,16 @@ void	check(int ac, char **av)
 	exit (EXIT_FAILURE);
 }
 
+/**
+ * @brief Validates command-line arguments.
+ *
+ * This function validates the command-line arguments. It checks if each
+ * argument is a digit and if they are within the specified range.
+ *
+ * @param ac The number of command-line arguments.
+ * @param av An array of strings containing the command-line arguments.
+ * @return true if the arguments are valid, false otherwise.
+ */
 static bool	arg_validation(int ac, char **av)
 {
 	int	i;
@@ -44,11 +64,23 @@ static bool	arg_validation(int ac, char **av)
 	return (check_range(av));
 }
 
+/**
+ * @brief Checks if a character is a digit.
+ *
+ * @param c The character to be checked.
+ * @return true if the character is a digit, false otherwise.
+ */
 static bool	is_digit(char c)
 {
 	return (c >= 48 && c <= 57);
 }
 
+/**
+ * @brief Checks if the command-line arguments are within the specified range.
+ *
+ * @param av An array of strings containing the command-line arguments.
+ * @return true if the arguments are within the range, false otherwise.
+ */
 static bool	check_range(char **av)
 {
 	if (INT_MAX < ft_atol(av[1]))
@@ -63,6 +95,9 @@ static bool	check_range(char **av)
 		return (true);
 }
 
+/**
+ * @brief Prints the helper message.
+ */
 static void	print_helper(void)
 {
 	printf(MAG"Instructions to execute:"RST"\n");
