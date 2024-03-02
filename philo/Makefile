@@ -5,7 +5,7 @@ NAME = philo
 SHELL := /bin/bash
 
 # misc #
-COUNT := -1
+COUNT := 0
 SLEEP := sleep 0.2
 
 # colors #
@@ -26,7 +26,7 @@ COMP = Compiling
 
 # debug and normal flags #
 DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread# TO DEBBUG
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=thread -pedantic -flto -MD -MP # FOR DEPENDENCIES
+CFLAGS = -Wall -Werror -Wextra -g3 -pedantic -flto -MD -MP # FOR DEPENDENCIES
 LFLAGS = -march=native # TO OPTIMIZE FOR SPECIFIC ARCHITECTURE
 FFLAGS =  -lpthread -pthread # FLAGS THAT ONLY WORK AT THE END OF LINE (AFTER OBJECTS)
 

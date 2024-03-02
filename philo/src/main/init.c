@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 22:03:16 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:52:45 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	philo_init(t_table *table)
 		philo = table->philo + i;
 		philo->id = i + 1;
 		philo->full = false;
-		philo->meals= 0;
+		philo->meals = 0;
 		philo->table = table;
 		safe_mtx_handle(&philo->philo_mtx, INIT);
 		assign_forks (philo, table->fork, i);
