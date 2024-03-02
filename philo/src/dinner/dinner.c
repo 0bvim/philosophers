@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 21:47:22 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 02:56:14 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 
 static void	eat(t_philo *philo);
 
+/**
+ * @brief Starts the dinner simulation on the specified table.
+ *
+ * This function starts the dinner simulation on the specified table by
+ * creating threads for each philosopher and a monitor thread.
+ * It sets the start time of the simulation, ensures all philosophers
+ * are ready to start, waits for all philosopher threads and
+ * the monitor thread to finish, and then marks the end of the simulation.
+ *
+ * @param table A pointer to the table structure containing information
+ * about the dining philosophers and their state.
+ */
 void	dinner_start(t_table *table)
 {
 	int	i;
@@ -38,6 +50,20 @@ void	dinner_start(t_table *table)
 	safe_thread_handle(&table->monitor, NULL, NULL, JOIN);
 }
 
+/**
+ * @brief Simulates a philosopher's behavior during the dinner.
+ *
+ * This function simulates a philosopher's behavior during the dinner.
+ * It waits for all threads to be ready, records the last meal time,
+ * increases the number of threads at the table, unsynchronizes philosophers,
+ * enters a loop to simulate eating, sleeping, and thinking, and exits the loop
+ * when the simulation status indicates it's time to end or the philosopher
+ * is full.
+ *
+ * @param data A pointer to the philosopher structure containing information
+ * about the philosopher and the table they are dining at.
+ * @return NULL
+ */
 void	*dinner_simulation(void *data)
 {
 	t_philo	*philo;
@@ -59,6 +85,18 @@ void	*dinner_simulation(void *data)
 	return (NULL);
 }
 
+/**
+ * @brief Simulates a philosopher eating.
+ *
+ * This function simulates a philosopher eating by locking the first and second
+ * forks, recording the time of the last meal, increasing the number of meals
+ * eaten by the philosopher, indicating the philosopher is eating, sleeping for
+ * the duration of eating time, and unlocking the forks when done. If the
+ * maximum number of meals is reached, it marks the philosopher as full.
+ *
+ * @param philo A pointer to the philosopher structure containing information
+ * about the philosopher and the table they are dining at.
+ */
 static void	eat(t_philo *philo)
 {
 	safe_mtx_handle(&philo->first_fork->fork, LOCK);
@@ -75,6 +113,21 @@ static void	eat(t_philo *philo)
 	safe_mtx_handle(&philo->second_fork->fork, UNLOCK);
 }
 
+/**
+ * @brief Simulates a philosopher thinking.
+ *
+ * This function simulates a philosopher thinking by calculating the time to
+ * think based on the eating and sleeping times. If it's not a pre-simulation
+ * thinking, it writes the thinking status to the output. If the number of
+ * philosophers is even, the function returns early since it doesn't
+ * need to think. Otherwise, it calculates the time to think based on the time
+ * to eat and sleep, and sleeps for that duration.
+ *
+ * @param philo A pointer to the philosopher structure containing information
+ * about the philosopher and the table they are dining at.
+ * @param pre_simulation A boolean indicating whether it's a pre-simulation
+ * thinking.
+ */
 void	thinking(t_philo *philo, bool pre_simulation)
 {
 	long	t_eat;
@@ -93,6 +146,18 @@ void	thinking(t_philo *philo, bool pre_simulation)
 	precise_usleep(t_think * 0.42, philo->table);
 }
 
+/**
+ * @brief Simulates a lonely philosopher's day.
+ *
+ * This function simulates a lonely philosopher's day by waiting for all
+ * threads to be ready, recording the time of the last meal, increasing the
+ * number of threads at the table, and then entering a loop to wait for the
+ * simulation to end.
+ *
+ * @param arg A pointer to the philosopher structure containing information
+ * about the philosopher and the table they are dining at.
+ * @return NULL
+ */
 void	*lonely_day(void *arg)
 {
 	t_philo	*philo;

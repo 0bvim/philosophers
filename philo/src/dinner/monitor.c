@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:34:27 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 01:52:48 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 02:50:15 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 
 static bool	philo_died(t_philo *ph);
 
+/**
+ * @brief Monitors the dining philosophers and detects if any philosopher has
+ * died.
+ *
+ * This function monitors the dining philosophers and checks if any philosopher
+ * has died.
+ * It waits for all threads to start running, then continuously checks the
+ * status of each philosopher.
+ * If a philosopher is found to have died, it writes the appropriate status and
+ * marks the end of the simulation.
+ *
+ * @param data A pointer to the table structure containing information about the
+ * dining philosophers.
+ * @return NULL
+ */
 void	*monitor(void *data)
 {
 	int		i;
@@ -37,6 +52,17 @@ void	*monitor(void *data)
 	return (NULL);
 }
 
+/**
+ * @brief Checks if a philosopher has died.
+ *
+ * This function checks if a philosopher has died by calculating the time
+ * elapsed since their last meal
+ * and comparing it with the time allowed to pass before a philosopher is
+ * considered to have died.
+ *
+ * @param ph A pointer to the philosopher structure to be checked.
+ * @return true if the philosopher has died, false otherwise.
+ */
 static bool	philo_died(t_philo *ph)
 {
 	long	elapsed;
