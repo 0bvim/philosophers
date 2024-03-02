@@ -6,12 +6,23 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:46:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 22:34:59 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 03:14:08 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
+/**
+ * @brief Parses input arguments and initializes part of the dining table.
+ *
+ * This function parses the input arguments provided from the command line and
+ * initializes the dining table structure accordingly. It sets the number of
+ * philosophers, time to die, time to eat, time to sleep,
+ * and maximum number of meals.
+ *
+ * @param table A pointer to the table structure to be initialized.
+ * @param av An array of strings containing the command-line arguments.
+ */
 void	parser_input(t_table *table, char **av)
 {
 	table->ph_nb = ft_atol(av[1]);

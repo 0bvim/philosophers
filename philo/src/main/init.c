@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 22:52:45 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 03:09:25 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@ static void	assign_forks(t_philo *philo, t_fork *fork, int position);
 static void	philo_init(t_table *table);
 
 /**
- * @brief function alloc structs.
- * @param table Struct with all the things.
- * @return Doest not have a return value.
- **/
+ * @brief Initializes the dining table.
+ *
+ * This function initializes the dining table by setting initial values and
+ * allocating memory for philosophers and forks. It also initializes mutexes for
+ * writing and table synchronization,as well as initializing
+ * mutexes for each fork.
+ *
+ * @param table A pointer to the table structure to be initialized.
+ */
 void	init(t_table *table)
 {
 	int	i;
@@ -41,10 +46,14 @@ void	init(t_table *table)
 }
 
 /**
- * @brief function alloc philo struct.
- * @param table Struct with all the things.
- * @return Doest not have a return value.
- **/
+ * @brief Initializes the philosophers.
+ *
+ * This function initializes the philosophers by setting initial values,
+ * assigning IDs, and initializing mutexes for each philosopher.
+ *
+ * @param table A pointer to the table structure containing information about
+ * the dining table.
+ */
 static void	philo_init(t_table *table)
 {
 	int		i;
@@ -64,11 +73,14 @@ static void	philo_init(t_table *table)
 }
 
 /**
- * @brief function to assigne forks to each philo
- * @param philo Struct with all philo information.
- * @param fork Struct with fork content.
- * @return Doest not have a return value.
- **/
+ * @brief Assigns forks to philosophers.
+ *
+ * This function assigns forks to philosophers based on their position and ID.
+ *
+ * @param philo A pointer to the philosopher structure to assign forks to.
+ * @param fork An array of forks to be assigned.
+ * @param position The position of the philosopher in the array.
+ */
 static void	assign_forks(t_philo *philo, t_fork *fork, int position)
 {
 	int	philo_nbr;

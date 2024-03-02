@@ -6,19 +6,21 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 00:55:56 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 10:09:03 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 03:24:27 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-/*
- * @brief function to set value of mutex for philo and fork
- * @param mtx Mutex variable to lock and unlock.
- * @param dst Destination of value to be set.
- * @param value Value to be set.
- * @return Does not return.
- **/
+/**
+ * @brief Sets a boolean value with mutex locking.
+ *
+ * This function sets a boolean value with mutx locking to ensure thread safety.
+ *
+ * @param mtx A pointer to the mutex structure used for synchronization.
+ * @param dst A pointer to the boolean value to be set.
+ * @param value The value to set.
+ */
 void	set_bool(t_mtx *mtx, bool *dst, bool value)
 {
 	safe_mtx_handle(mtx, LOCK);
@@ -26,12 +28,16 @@ void	set_bool(t_mtx *mtx, bool *dst, bool value)
 	safe_mtx_handle(mtx, UNLOCK);
 }
 
-/*
- * @brief function to get value of mutex for philo and fork.
- * @param mtx Mutex variable to lock and unlock.
- * @param value Value to get.
- * @return The value.
- **/
+/**
+ * @brief Retrieves a boolean value with mutex locking.
+ *
+ * This function retrieves a boolean value with mutex locking to ensure thread
+ * safety.
+ *
+ * @param mtx A pointer to the mutex structure used for synchronization.
+ * @param value A pointer to the boolean value to be retrieved.
+ * @return The retrieved boolean value.
+ */
 bool	get_bool(t_mtx *mtx, bool *value)
 {
 	bool	ret;
@@ -42,13 +48,16 @@ bool	get_bool(t_mtx *mtx, bool *value)
 	return (ret);
 }
 
-/*
- * @brief function to set value of mutex for eat, sleep and die.
- * @param mtx Mutex variable to lock and unlock.
- * @param dst Destination of value to be set.
- * @param value Value to be set.
- * @return Does not return.
- **/
+/**
+ * @brief Sets a long integer value with mutex locking.
+ *
+ * This function sets a long integer value with mutex locking to ensure thread
+ * safety.
+ *
+ * @param mtx A pointer to the mutex structure used for synchronization.
+ * @param dst A pointer to the long integer value to be set.
+ * @param value The value to set.
+ */
 void	set_long(t_mtx *mtx, long *dst, long value)
 {
 	safe_mtx_handle(mtx, LOCK);
@@ -56,12 +65,16 @@ void	set_long(t_mtx *mtx, long *dst, long value)
 	safe_mtx_handle(mtx, UNLOCK);
 }
 
-/*
- * @brief function to get value of mutex for eat, sleep and die.
- * @param mtx Mutex variable to lock and unlock.
- * @param value Value to get.
- * @return The value.
- **/
+/**
+ * @brief Retrieves a long integer value with mutex locking.
+ *
+ * This function retrieves a long integer value with mutex locking to ensure
+ * thread safety.
+ *
+ * @param mtx A pointer to the mutex structure used for synchronization.
+ * @param value A pointer to the long integer value to be retrieved.
+ * @return The retrieved long integer value.
+ */
 long	get_long(t_mtx *mtx, long *value)
 {
 	long	ret;
@@ -72,12 +85,15 @@ long	get_long(t_mtx *mtx, long *value)
 	return (ret);
 }
 
-/*
- * @brief function to get value of end and verify if simulation ended.
- * @param mtx Mutex variable to lock and unlock.
- * @param value Value to get.
- * @return The value.
- **/
+/**
+ * @brief Checks the status of the simulation.
+ *
+ * This function checks the status of the simulation by retrieving the value of the end flag
+ * from the table structure.
+ *
+ * @param table A pointer to the table structure containing information about the dining philosophers.
+ * @return true if the simulation has ended, false otherwise.
+ */
 bool	simulation_status(t_table *table)
 {
 	return (get_bool(&table->table_mtx, &table->end));
