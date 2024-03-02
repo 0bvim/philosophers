@@ -6,17 +6,21 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:46:26 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 10:30:53 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 03:34:37 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
 /**
- * @brief function to alloc memory safe.
- * @param bytes Size to be allocated.
- * @return Allocated content.
-*/
+ * @brief Safely allocates memory.
+ *
+ * This function safely allocates memory using malloc and checks for allocation
+ * errors.
+ *
+ * @param bytes The number of bytes to allocate.
+ * @return A pointer to the allocated memory.
+ */
 void	*safe_malloc(size_t bytes)
 {
 	void	*ret;
@@ -28,10 +32,14 @@ void	*safe_malloc(size_t bytes)
 }
 
 /**
- * @brief Function to verify errors about thread.
- * @param status Return status of functions <CREATE> <JOIN> DETACH>.
- * @param opcode Code defined in enum for operations.
- * @return This function does not return.
+ * @brief Handles thread-related errors.
+ * 
+ * This function handles errors that may occur during thread creation, joining,
+ * or detaching.
+ * 
+ * @param status The status code returned by the pthread function.
+ * @param opcode The operation code indicating the type of operation.
+ * (CREATE, JOIN, DETACH).
  */
 static void	handle_thread_error(int status, t_code opcode)
 {
@@ -52,12 +60,16 @@ static void	handle_thread_error(int status, t_code opcode)
 }
 
 /**
- * @brief Function to handle threads
- * @param thread Thread to be handled.
- * @param *(*foo) Function pointer of routine.
- * @param Data Struct with variables to operations.
- * @param opcode Operation code of action.
- * @return This function does not return.
+ * @brief Safely handles thread operations.
+ *
+ * This function safely handles thread operations such as creation,
+ * joining, or detaching, and checks for errors.
+ *
+ * @param thread A pointer to the pthread_t variable.
+ * @param foo The function pointer to the thread function.
+ * @param data The data to be passed to the thread function.
+ * @param opcode The operation code indicating the type of operation.
+ * (CREATE, JOIN, DETACH).
  */
 void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 		void *data, t_code opcode)
@@ -73,10 +85,14 @@ void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 }
 
 /**
- * @brief Function to verify errors about mutex.
- * @param status Return status of functions.
- * @param opcode Code defined in enum for operations.
- * @return This function does not return.
+ * @brief Handles mutex-related errors.
+ *
+ * This function handles errors that may occur during mutex initialization,
+ * locking, unlocking, or destruction.
+ *
+ * @param status The status code returned by the pthread_mutex function.
+ * @param opcode The operation code indicating the type of operation
+ * (INIT, LOCK, UNLOCK, DESTROY).
  */
 static void	handle_mtx_error(int status, t_code opcode)
 {
@@ -98,11 +114,15 @@ static void	handle_mtx_error(int status, t_code opcode)
 }
 
 /**
-* @brief Function to do a operation of mutex.
-* @param mutex Variable to do operation.
-* @param operation Enum code with the operation to be done.
-* @return This function does not have a return value.
-*/
+ * @brief Safely handles mutex operations.
+ *
+ * This function safely handles mutex operations such as initialization,
+ * locking, unlocking, or destruction, and checks for errors.
+ *
+ * @param mutex A pointer to the mutex variable.
+ * @param opcode The operation code indicating the type of operation
+ * (INIT, LOCK, UNLOCK, DESTROY).
+ */
 void	safe_mtx_handle(t_mtx *mutex, t_code opcode)
 {
 	if (INIT == opcode)

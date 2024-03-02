@@ -6,17 +6,21 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/02/29 12:37:43 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 03:27:25 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-/*
- * @brief Function to get current time and convert.
- * param time_code Code of which kind of value wanna get.
- * return long Value converted.
- **/
+/**
+ * @brief Retrieves the current time.
+ *
+ * This function retrieves the current time in different units based on the
+ * specified time code.
+ *
+ * @param time_code The time code indicating the desired time unit.
+ * @return The current time in the specified unit.
+ */
 long	gettime(t_time_code time_code)
 {
 	struct timeval	tv;
@@ -34,23 +38,29 @@ long	gettime(t_time_code time_code)
 	return (42);
 }
 
-/*
- * @brief Function to print error message and exit.
- * param message The message that should be printed.
- * return Does not return a value, just exit.
- **/
+/**
+ * @brief Exits the program with an error message.
+ *
+ * This function prints an error message in red color and exits the program
+ * with failure status.
+ *
+ * @param message The error message to be displayed.
+ */
 void	error_exit(const char *message)
 {
 	printf(RED"%s"RST"\n", message);
 	exit (EXIT_FAILURE);
 }
 
-/*
- * @brief Function to get more precise time than usleep.
- * param usec Time to adjust.
- * param table Struct with all information.
- * return Does not return a value.
- **/
+/**
+ * @brief Sleeps for a precise amount of time.
+ *
+ * This function sleeps for a precise amount of time specified in microseconds, ensuring accuracy
+ * by continuously checking the elapsed time until the desired duration is reached.
+ *
+ * @param usec The duration to sleep in microseconds.
+ * @param table A pointer to the table structure containing information about the dining philosophers.
+ */
 void	precise_usleep(long usec, t_table *table)
 {
 	long	start;
