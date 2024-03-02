@@ -51,4 +51,5 @@ Module.symvers
 Mkfile.old
 dkms.conf
 philo/philo
+philo/valgrind*
 philo_bonus/philo_bonus
