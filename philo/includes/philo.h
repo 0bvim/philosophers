@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 19:19:47 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 21:40:03 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void	check(int ac, char **av);
 void	parser_input(t_table *table, char **av);
 void	init(t_table *table);
 void	run(int ac, char **av);
+void	clean(t_table *table);
 
 /* utils */
 long	ft_atol(const char *nptr);

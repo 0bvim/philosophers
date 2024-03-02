@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 21:40:38 by vde-frei         ###   ########.fr       */
+/*   Created: 2024/03/01 21:38:01 by vde-frei          #+#    #+#             */
+/*   Updated: 2024/03/01 21:39:39 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	main(int ac, char **av)
+void	clean(t_table *table)
 {
-	t_table	table;
+	t_philo	*philo;
+	int		i;
 
-	check(ac, av);
-	parser_input(&table, av);
-	init(&table);
-	dinner_start(&table);
-	clean(&table);
-	return (EXIT_SUCCESS);
+	i = -1;
+	while (++i < table->ph_nb)
+	{
+		philo = table->philo + i;
+		safe_mtx_handle(&philo->philo_mtx, DESTROY);
+	}
+	safe_mtx_handle(&table->write_mtx, DESTROY);
+	safe_mtx_handle(&table->table_mtx, DESTROY);
+	free(table->fork);
+	free(table->philo);
 }

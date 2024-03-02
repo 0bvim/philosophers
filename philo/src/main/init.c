@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 12:36:56 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:03:16 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	init(t_table *table)
 
 	i = -1;
 	table->end = false;
+	table->all_up = false;
+	table->th_nbr = 0;
 	table->philo = safe_malloc(sizeof(t_philo) * table->ph_nb);
 	table->fork = safe_malloc(sizeof(t_fork) * table->ph_nb);
-	table->th_nbr = 0;
-	safe_mtx_handle(&table->table_mtx, INIT);
 	safe_mtx_handle(&table->write_mtx, INIT);
+	safe_mtx_handle(&table->table_mtx, INIT);
 	while (++i < table->ph_nb)
 	{
 		safe_mtx_handle(&table->fork[i].fork, INIT);
@@ -55,7 +56,7 @@ static void	philo_init(t_table *table)
 		philo = table->philo + i;
 		philo->id = i + 1;
 		philo->full = false;
-		philo->last_meal = 0;
+		philo->meals= 0;
 		philo->table = table;
 		safe_mtx_handle(&philo->philo_mtx, INIT);
 		assign_forks (philo, table->fork, i);
@@ -73,8 +74,8 @@ static void	assign_forks(t_philo *philo, t_fork *fork, int position)
 	int	philo_nbr;
 
 	philo_nbr = philo->table->ph_nb;
-	philo->first_fork = &fork[position];
-	philo->second_fork = &fork[(position + 1) % philo_nbr];
+	philo->first_fork = &fork[(position + 1) % philo_nbr];
+	philo->second_fork = &fork[position];
 	if (philo->id % 2 == 0)
 	{
 		philo->first_fork = &fork[position];
