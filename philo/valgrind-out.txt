@@ -1,0 +1,7 @@
+==151456== Memcheck, a memory error detector
+==151456== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==151456== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==151456== Command: ./philo 201 800 200 200 1
+==151456== Parent PID: 151454
+==151456== 
+==151456== Warning: set address range perms: large range [0x7b0000000000, 0x7c0000003000) (noaccess)
