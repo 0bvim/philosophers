@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:34:27 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/01 19:35:22 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 01:52:48 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	*monitor(void *data)
 		{
 			if (philo_died(table->philo + i))
 			{
-				set_bool(&table->table_mtx, &table->end, true);
 				write_status(DIED, table->philo + i, DEBUG_MODE);
+				set_bool(&table->table_mtx, &table->end, true);
 			}
 		}
 	}
