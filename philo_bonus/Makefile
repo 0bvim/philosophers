@@ -1,3 +1,4 @@
+
 # program name #
 NAME = philo_bonus
 
@@ -5,7 +6,7 @@ NAME = philo_bonus
 SHELL := /bin/bash
 
 # misc #
-COUNT := -1
+COUNT := 0
 SLEEP := sleep 0.2
 
 # colors #
@@ -25,10 +26,11 @@ FCLEAN = Program delete
 COMP = Compiling
 
 # debug and normal flags #
-DFLAGS = -Wall -Wextra -Werror -g3 # TO DEBBUG
+DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread# TO DEBBUG
 CFLAGS = -Wall -Werror -Wextra -g3 -pedantic -flto -MD -MP # FOR DEPENDENCIES
 LFLAGS = -march=native # TO OPTIMIZE FOR SPECIFIC ARCHITECTURE
-FFLAGS =  -lpthread -pthread # FLAGS THAT ONLY WORK AT THE END OF LINE (AFTER OBJECTS)
+FFLAGS =  -lpthread -pthread # FLAGS THAT
+CCPFLAGS := -I./includes/ -DDEBUG
 
 # paths #
 SRC = src
@@ -36,13 +38,18 @@ INC = includes
 OBJ = obj
 
 # includes #
-HEADERS = $(addprefix $(INC)/, philo.h)
+HEADERS = $(addprefix $(INC)/, philo_bonus.h)
 
 # files path #
-
+MAIN = $(SRC)/main/
+DINNER = $(SRC)/dinner/
+UTILS = $(SRC)/utils/
 
 # files mandatory #
-CFILES = $(addprefix $(SRC)/, file1.c file2.c file3.c)
+CFILES = $(addprefix $(MAIN), main.c first_check.c)
+CFILES += $(addprefix $(DINNER), )
+CFILES += $(addprefix $(UTILS), ft_atoi.c)
+# CFILES += $(addprefix $(UTILS), ft_atoi.c utils.c wrapper_functions.c cleanup.c)
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
 VAL_TXT = valgrind-out.txt
@@ -61,20 +68,20 @@ define create_objects_dir
 endef
 
 define compile
-	$(CC) -o $(NAME) $(CFLAGS) $(LFLAGS) $(INCLUDES) $(LINCLUDES) $(OBJECT) $(BIN_OBJ) $(FFLAGS)
+	$(CC) -o $(NAME) $(CFLAGS) $(LFLAGS) $(CCPFLAGS) $(OBJECT) $(BIN_OBJ) $(FFLAGS)
 	$(SLEEP)
 	printf "\n$(MAGENTA)$(MANDATORY)\n$(RESET)"
 endef
 
 define compile_bonus
-	$(CC) -o $(NAME) $(CFLAGS) $(LFLAGS) $(INCLUDES) $(LINCLUDES) $(OBJECT) $(BIN_OBJ) $(FFLAGS)
+	$(CC) -o $(NAME) $(CFLAGS) $(LFLAGS) $(INCLUDES) $(OBJECT) $(BIN_OBJ) $(FFLAGS)
 	$(SLEEP)
 	printf "\n$(MAGENTA)$(MANDATORY)\n$(RESET)"
 endef
 
 define compile_source
 	$(eval COUNT=$(shell expr $(COUNT) + 1))
-	$(CC) -o $@ $(CFLAGS) $(INCLUDES) -c $<
+	$(CC) -o $@ $(CCPFLAGS) $(CFLAGS) $(INCLUDES) -c $<
 	printf "$(RESET_TERM)$(RESET)%d%%  $(BLUE)$(COMP) $(notdir $<) -> $(notdir $@) to $(ORANGE)$(NAME) \r$(RESET)" $$(echo $$(($(COUNT) * 100 / $(words $(OBJECT)))))
 endef
 

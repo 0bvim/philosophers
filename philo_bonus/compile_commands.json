@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-I./includes/",
+      "-DDEBUG",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/main/main.o",
+      "src/main/main.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/src/main/main.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/obj/src/main/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-I./includes/",
+      "-DDEBUG",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/main/first_check.o",
+      "src/main/first_check.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/src/main/first_check.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/obj/src/main/first_check.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-I./includes/",
+      "-DDEBUG",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-pedantic",
+      "-flto",
+      "-c",
+      "-o",
+      "obj/src/utils/ft_atoi.o",
+      "src/utils/ft_atoi.c"
+    ],
+    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus",
+    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/src/utils/ft_atoi.c",
+    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/obj/src/utils/ft_atoi.o"
+  }
+]
