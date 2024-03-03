@@ -6,11 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:34:27 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 02:50:15 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 13:03:25 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philo_bonus.h"
 
 static bool	philo_died(t_philo *ph);
 
