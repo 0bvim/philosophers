@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "philo.h"
 
 static void	assign_forks(t_philo *philo, t_fork *fork, int position);
 static void	philo_init(t_table *table);

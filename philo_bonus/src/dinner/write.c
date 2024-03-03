@@ -6,11 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:40:42 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 02:59:24 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 13:03:52 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philo_bonus.h"
 
 /**
  * @brief Writes the status of a philosopher in debug mode.
