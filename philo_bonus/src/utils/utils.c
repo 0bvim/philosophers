@@ -6,11 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 13:03:03 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:20:38 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo_bonus.h"
+#include "philo_bonus.h"
 
 /**
  * @brief Retrieves the current time.
@@ -61,23 +61,23 @@ void	error_exit(const char *message)
  * @param usec The duration to sleep in microseconds.
  * @param table A pointer to the table structure containing information about the dining philosophers.
  */
-void	precise_usleep(long usec, t_table *table)
-{
-	long	start;
-	long	elapsed;
-	long	remaining;
-
-	start = gettime(MICROSEC);
-	while (gettime(MICROSEC) - start < usec)
-	{
-		if (simulation_status(table))
-			break ;
-		elapsed = gettime(MICROSEC) - start;
-		remaining = usec - elapsed;
-		if (remaining > 1e3)
-			usleep(remaining / 2);
-		else
-			while (gettime(MICROSEC) - start < usec)
-				;
-	}
-}
+// void	precise_usleep(long usec, t_table *table)
+// {
+// 	long	start;
+// 	long	elapsed;
+// 	long	remaining;
+//
+// 	start = gettime(MICROSEC);
+// 	while (gettime(MICROSEC) - start < usec)
+// 	{
+// 		if (simulation_status(table))
+// 			break ;
+// 		elapsed = gettime(MICROSEC) - start;
+// 		remaining = usec - elapsed;
+// 		if (remaining > 1e3)
+// 			usleep(remaining / 2);
+// 		else
+// 			while (gettime(MICROSEC) - start < usec)
+// 				;
+// 	}
+// }

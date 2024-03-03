@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:33 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 23:15:30 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:22:32 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,17 @@ typedef enum e_time_code
 	MICROSEC,
 }	t_time_code;
 
+typedef enum e_mtx
+{
+	CREATE,
+	INIT,
+	LOCK,
+	UNLOCK,
+	DESTROY,
+	DETACH,
+	JOIN
+}	t_code;
+
 typedef pthread_mutex_t	t_mtx;
 typedef struct s_philo	t_philo;
 
@@ -102,7 +113,7 @@ struct s_philo
 /* entrance function */
 void	check(int ac, char **av);
 void	parser_input(t_table *table, char **av);
-void	init(t_table *table);
+void	init_processes(t_table *table);
 void	run(int ac, char **av);
 void	clean(t_table *table);
 

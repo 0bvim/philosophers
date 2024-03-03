@@ -6,11 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 00:19:21 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 03:04:19 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/03 13:00:34 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "philo_bonus.h"
 
 static void	print_helper(void);
 static bool	arg_validation(int ac, char **av);

@@ -6,11 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 11:43:55 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:23:34 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo_bonus.h"
+#include "philo_bonus.h"
 
 /**
  * @brief The entry point of the program.
@@ -25,12 +25,8 @@
  */
 int	main(int ac, char **av)
 {
-	t_table	table;
+	// t_table	table;
 
 	check(ac, av);
-	parser_input(&table, av);
-	init(&table);
-	dinner_start(&table);
-	clean(&table);
 	return (EXIT_SUCCESS);
 }
