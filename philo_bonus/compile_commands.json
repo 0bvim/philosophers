@@ -1,62 +1,254 @@
 [
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-I./includes/",
-      "-DDEBUG",
-      "-Wall",
-      "-Werror",
-      "-Wextra",
-      "-g3",
-      "-pedantic",
-      "-flto",
-      "-c",
-      "-o",
-      "obj/src/main/main.o",
-      "src/main/main.c"
-    ],
-    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus",
-    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/src/main/main.c",
-    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/obj/src/main/main.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-I./includes/",
-      "-DDEBUG",
-      "-Wall",
-      "-Werror",
-      "-Wextra",
-      "-g3",
-      "-pedantic",
-      "-flto",
-      "-c",
-      "-o",
-      "obj/src/main/first_check.o",
-      "src/main/first_check.c"
-    ],
-    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus",
-    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/src/main/first_check.c",
-    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/obj/src/main/first_check.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/cc",
-      "-I./includes/",
-      "-DDEBUG",
-      "-Wall",
-      "-Werror",
-      "-Wextra",
-      "-g3",
-      "-pedantic",
-      "-flto",
-      "-c",
-      "-o",
-      "obj/src/utils/ft_atoi.o",
-      "src/utils/ft_atoi.c"
-    ],
-    "directory": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus",
-    "file": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/src/utils/ft_atoi.c",
-    "output": "/home/nivicius/Documents/projects/ft/philosophers/philo_bonus/obj/src/utils/ft_atoi.o"
-  }
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/main.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/main.c"
+  ],
+  "file": "src/main/main.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/eat.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/eat.c"
+  ],
+  "file": "src/main/eat.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/first_check.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/first_check.c"
+  ],
+  "file": "src/main/first_check.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/init_data.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/init_data.c"
+  ],
+  "file": "src/main/init_data.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/run_process.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/run_process.c"
+  ],
+  "file": "src/main/run_process.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/monitor.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/monitor.c"
+  ],
+  "file": "src/main/monitor.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/ft_atoi.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/ft_atoi.c"
+  ],
+  "file": "src/utils/ft_atoi.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/utils.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/utils.c"
+  ],
+  "file": "src/utils/utils.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/cleanup.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/cleanup.c"
+  ],
+  "file": "src/utils/cleanup.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/ft_itoa.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/ft_itoa.c"
+  ],
+  "file": "src/utils/ft_itoa.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/handle_str.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/handle_str.c"
+  ],
+  "file": "src/utils/handle_str.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/update_meals.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/update_meals.c"
+  ],
+  "file": "src/utils/update_meals.c"
+ }
 ]
