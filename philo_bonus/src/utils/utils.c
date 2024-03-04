@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 23:33:08 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:43:32 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,18 @@ void	sleep_even(t_table *table)
 {
 	if (table->philo.id % 2 == 0)
 		ft_usleep(table->eat - 10);
+}
+
+int	print_msg(t_table *table, char *msg)
+{
+	sem_wait(table->sem_print);
+	if (someone_died())
+	{
+		sem_post(table->sem_print);
+		return (1);
+	}
+	printf("%ld %d %s\n", gettime(MILLISEC) - table->start,
+		table->philo.id, msg);
+	sem_post(table->sem_print);
+	return (0);
 }

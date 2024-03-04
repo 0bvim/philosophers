@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:33 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 23:31:38 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:02:45 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	last_meal_update(t_table *table);
 void	ft_usleep(long sleep_time);
 long	gettime(t_time_code time_code);
 long	ft_atol(const char *nptr);
+int		print_msg(t_table *table, char *msg);
 
 /* string manipulation */
 char	*ft_strmerge(char *s1, char *s2);
@@ -138,6 +139,16 @@ void	start_routine(t_table *table, int id);
 long	get_last_eat_time(t_table *table);
 bool	someone_died(void);
 bool	philo_died(t_table *table);
+bool	should_stop(t_st state);
 t_st	get_philo_state(t_table *table);
+
+/* eat */
+int		eat(t_table *table);
+int		take_forks(t_table *table);
+int		drop_forks(t_table *table);
+bool	philo_full(t_table *table);
+
+/* sleep */
+int	ft_sleep(t_table *table);
 
 #endif // !PHILO_H

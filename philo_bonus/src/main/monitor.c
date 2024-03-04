@@ -6,13 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 22:09:43 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 23:32:17 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:33:54 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-
-static bool	should_stop(t_st state);
 
 void	*monitor_death(void *data_p)
 {
@@ -42,7 +40,7 @@ void	*monitor_death(void *data_p)
 	return (NULL);
 }
 
-static bool	should_stop(t_st state)
+bool	should_stop(t_st state)
 {
 	if (state == DEAD || state == FINISH || state == FULL)
 		return (true);

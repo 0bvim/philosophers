@@ -6,11 +6,14 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:23:57 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 23:32:41 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:07:13 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdlib.h>
 
 static char	*create_sem_name(int id);
 
@@ -43,9 +46,19 @@ void	start_routine(t_table *table, int id)
 		clean (table);
 		error_exit("THREAD ERROR");
 	}
-	//TODO: while true, if eat || should stop - if ft_sleep || should stop - think...
-	//TODO: if pthread join exit
-	//TODO: sem_close philo
+	while (true)
+	{
+		if (eat(table) || should_stop(get_philo_state(table)))
+			break ;
+		if (ft_sleep(table) || should_stop(get_philo_state(table)))
+			break ;
+		if (print_msg(table, "is thinking"))
+			break ;
+	}
+	if (pthread_join(table->monitor, NULL))
+		exit(EXIT_FAILURE);
+	sem_close(table->philo.philo_sem);
+	exit (0);
 }
 
 void	set_philo(t_table *table, int id)
