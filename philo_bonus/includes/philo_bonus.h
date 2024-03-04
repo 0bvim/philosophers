@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 19:40:30 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 20:00:59 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <semaphore.h>
 
 /**
  * for definitions and types
@@ -68,7 +69,12 @@ typedef enum e_mtx
 	UNLOCK,
 	DESTROY,
 	DETACH,
-	JOIN
+	JOIN,
+	OPEN,
+	CLOSE,
+	POST,
+	WAIT,
+	UNLINK,
 }	t_code;
 
 /* HANDLE TIME */
@@ -99,8 +105,8 @@ typedef struct s_table
 	bool		end;
 	bool		all_up;
 	long		th_nbr;
-	t_mtx		table_mtx;
-	t_mtx		write_mtx;
+	sem_t		*table_mtx;
+	sem_t		*write_mtx;
 	t_fork		*fork;
 	t_philo		*philo;
 	pthread_t	monitor;
@@ -112,7 +118,7 @@ struct s_philo
 	bool		full;
 	long		meals;
 	long		last_meal;
-	t_mtx		philo_mtx;
+	sem_t		*philo_mtx;
 	t_fork		*first_fork;
 	t_fork		*second_fork;
 	t_table		*table;
@@ -135,7 +141,7 @@ void	precise_usleep(long usec, t_table *table);
 void	*safe_malloc(size_t bytes);
 void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 			void *data, t_code opcode);
-void	safe_mtx_handle(t_mtx *mutex, t_code opcode);
+void	safe_mtx_handle(sem_t *mutex, t_code opcode);
 
 /* function to error */
 void	error_exit(const char *message);

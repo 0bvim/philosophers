@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   wrapper_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-frei <vde-frei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:46:26 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 19:47:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 20:22:21 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <semaphore.h>
 
 /**
  * @brief Safely allocates memory.
@@ -123,10 +124,10 @@ static void	handle_mtx_error(int status, t_code opcode)
  * @param opcode The operation code indicating the type of operation
  * (INIT, LOCK, UNLOCK, DESTROY).
  */
-void	safe_mtx_handle(t_mtx *mutex, t_code opcode)
+void	safe_mtx_handle(sem_t *mutex, t_code opcode, char *name)
 {
-	if (INIT == opcode)
-		handle_mtx_error(pthread_mutex_init(mutex, NULL), opcode);
+	if (OPEN == opcode)
+		handle_mtx_error(sem_open(name, 0666, )_, opcode);
 	else if (LOCK == opcode)
 		handle_mtx_error(pthread_mutex_lock(mutex), opcode);
 	else if (UNLOCK == opcode)
