@@ -271,5 +271,278 @@
    "src/utils/cleanup.c"
   ],
   "file": "src/utils/cleanup.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/main.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/main.c"
+  ],
+  "file": "src/main/main.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/first_check.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/first_check.c"
+  ],
+  "file": "src/main/first_check.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/init.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/init.c"
+  ],
+  "file": "src/main/init.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/main/parser.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/main/parser.c"
+  ],
+  "file": "src/main/parser.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/dinner/dinner.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/dinner/dinner.c"
+  ],
+  "file": "src/dinner/dinner.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/dinner/monitor.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/dinner/monitor.c"
+  ],
+  "file": "src/dinner/monitor.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/dinner/synchro.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/dinner/synchro.c"
+  ],
+  "file": "src/dinner/synchro.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/dinner/write.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/dinner/write.c"
+  ],
+  "file": "src/dinner/write.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/ft_atoi.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/ft_atoi.c"
+  ],
+  "file": "src/utils/ft_atoi.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/utils.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/utils.c"
+  ],
+  "file": "src/utils/utils.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/wrapper_functions.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/wrapper_functions.c"
+  ],
+  "file": "src/utils/wrapper_functions.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/get_set.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/get_set.c"
+  ],
+  "file": "src/utils/get_set.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/cleanup.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/cleanup.c"
+  ],
+  "file": "src/utils/cleanup.c"
  }
 ]
