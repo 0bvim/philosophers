@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 14:20:38 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:44:53 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,17 @@ void	error_exit(const char *message)
 	exit (EXIT_FAILURE);
 }
 
-/**
- * @brief Sleeps for a precise amount of time.
- *
- * This function sleeps for a precise amount of time specified in microseconds, ensuring accuracy
- * by continuously checking the elapsed time until the desired duration is reached.
- *
- * @param usec The duration to sleep in microseconds.
- * @param table A pointer to the table structure containing information about the dining philosophers.
- */
-// void	precise_usleep(long usec, t_table *table)
-// {
-// 	long	start;
-// 	long	elapsed;
-// 	long	remaining;
-//
-// 	start = gettime(MICROSEC);
-// 	while (gettime(MICROSEC) - start < usec)
-// 	{
-// 		if (simulation_status(table))
-// 			break ;
-// 		elapsed = gettime(MICROSEC) - start;
-// 		remaining = usec - elapsed;
-// 		if (remaining > 1e3)
-// 			usleep(remaining / 2);
-// 		else
-// 			while (gettime(MICROSEC) - start < usec)
-// 				;
-// 	}
-// }
+void	ft_usleep(long	sleep_time)
+{
+	long	start;
+	
+	start = gettime(MILLISEC);
+	while ((gettime(MILLISEC) - start) < sleep_time)
+		usleep(500);
+}
+
+void	sleep_even(t_table *table)
+{
+	if (table->philo.id % 2 == 0)
+		ft_usleep(table->eat - 10);
+}

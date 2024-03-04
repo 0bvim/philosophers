@@ -46,9 +46,9 @@ DINNER = $(SRC)/dinner/
 UTILS = $(SRC)/utils/
 
 # files mandatory #
-CFILES = $(addprefix $(MAIN), main.c first_check.c)
+CFILES = $(addprefix $(MAIN), main.c first_check.c init_data.c run_process.c monitor.c)
 CFILES += $(addprefix $(DINNER), )
-CFILES += $(addprefix $(UTILS), ft_atoi.c)
+CFILES += $(addprefix $(UTILS), ft_atoi.c utils.c cleanup.c ft_itoa.c handle_str.c update_meals.c)
 # CFILES += $(addprefix $(UTILS), ft_atoi.c utils.c wrapper_functions.c cleanup.c)
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt

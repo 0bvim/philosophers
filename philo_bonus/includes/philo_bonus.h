@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:33 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 14:22:32 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:46:39 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <semaphore.h>
+# include <pthread.h>
 
 # include <stdbool.h>
 # include <stddef.h>
@@ -52,9 +53,10 @@ typedef enum e_philo_status
 	EATING,
 	SLEEPING,
 	THINKING,
-	TAKE_FIRST_FORK,
-	TAKE_SECOND_FORK,
-	DIED,
+	DEAD,
+	FULL,
+	FINISH,
+	IDLE,
 }	t_philo_status;
 
 /* HANDLE TIME */
@@ -77,12 +79,22 @@ typedef enum e_mtx
 }	t_code;
 
 typedef pthread_mutex_t	t_mtx;
-typedef struct s_philo	t_philo;
+typedef struct s_table	t_table;
 
 typedef struct s_fork
 {
 	int		id;
 }	t_fork;
+
+typedef struct s_philo
+{
+	int				id;
+	long			meals;
+	long			last_meal;
+	t_philo_status	state;
+	sem_t			*philo_sem;
+	t_table			*table;
+}	t_philo;
 
 typedef struct s_table
 {
@@ -92,34 +104,41 @@ typedef struct s_table
 	long		sleep;
 	long		die;
 	long		start;
-	bool		end;
-	bool		all_up;
 	sem_t		*sem_print;
 	sem_t		*sem_forks;
-	t_philo		*philo;
+	t_philo		philo;
 	pthread_t	monitor;
 }	t_table;
 
-struct s_philo
-{
-	int			id;
-	bool		full;
-	long		meals;
-	long		last_meal;
-	sem_t		philo_sem;
-	t_table		*table;
-};
-
 /* entrance function */
 void	check(int ac, char **av);
-void	parser_input(t_table *table, char **av);
-void	init_processes(t_table *table);
-void	run(int ac, char **av);
-void	clean(t_table *table);
+void	init_data(t_table *table, char **av);
 
 /* utils */
-long	ft_atol(const char *nptr);
 void	error_exit(const char *message);
+void	clean(t_table *table);
+void	last_meal_update(t_table *table);
+void	ft_usleep(long	sleep_time);
+long	gettime(t_time_code time_code);
+long	ft_atol(const char *nptr);
+
+/* string manipulation */
+char	*ft_strmerge(char *s1, char *s2);
+char	*ft_strdup(const char *s);
+char	*ft_itoa(int n);
+
+/* run process */
+void			run_process(t_table *table);
+void			set_philo(t_table *table, int id);
+void			sleep_even(t_table *table);
+void			set_philo_state(t_table *table, t_philo_status state);
+void			let_others_know(void);
+void			*monitor_death(void *data_p);
+void			start_routine(t_table *table, int id);
+long			get_last_eat_time(t_table *table);
+bool			someone_died(void);
+bool			philo_died(t_table *table);
+t_philo_status	get_philo_state(t_table *table);
 
 #endif // !PHILO_H
 
