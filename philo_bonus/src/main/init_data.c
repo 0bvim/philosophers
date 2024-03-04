@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 20:24:51 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 22:38:30 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:34:37 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	init_semaphore(t_table *table)
 	table->sem_print = sem_open("/print", O_CREAT, 0644, 1);
 	if (table->sem_forks == SEM_FAILED || table->sem_print == SEM_FAILED)
 		error_exit("SEM FAILED");
-	sem_unlink("/forks");
-	sem_unlink("/print");
+	// sem_unlink("/forks");
+	// sem_unlink("/print");
 }
 
 void	init_data(t_table *table, char **av)

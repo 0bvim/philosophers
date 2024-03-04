@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 11:43:32 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:50:51 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	ft_usleep(long sleep_time)
 {
 	long	start;
 
-	start = gettime(MILLISEC);
-	while ((gettime(MILLISEC) - start) < sleep_time)
+	start = gettime(MICROSEC);
+	while ((gettime(MICROSEC) - start) < sleep_time)
 		usleep(500);
 }
 

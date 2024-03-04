@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:23:57 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 12:29:41 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:59:59 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	set_philo(t_table *table, int id)
 	sem_name = create_sem_name(id);
 	if (!sem_name)
 	{
+		free(sem_name);
 		clean (table);
 		error_exit("MALLOC ERROR");
 	}

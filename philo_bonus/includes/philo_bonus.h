@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:33 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 12:02:45 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:40:05 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ t_st	get_philo_state(t_table *table);
 /* eat */
 int		eat(t_table *table);
 int		take_forks(t_table *table);
-int		drop_forks(t_table *table);
+int		drop_forks(t_table **table);
 bool	philo_full(t_table *table);
 
 /* sleep */
