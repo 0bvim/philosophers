@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:23:57 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 22:49:07 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/03 23:32:41 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void	start_routine(t_table *table, int id)
 		clean (table);
 		error_exit("THREAD ERROR");
 	}
-
+	//TODO: while true, if eat || should stop - if ft_sleep || should stop - think...
+	//TODO: if pthread join exit
+	//TODO: sem_close philo
 }
 
 void	set_philo(t_table *table, int id)
@@ -63,7 +65,6 @@ void	set_philo(t_table *table, int id)
 	table->philo.id = id;
 	last_meal_update(table);
 }
-
 
 static char	*create_sem_name(int id)
 {

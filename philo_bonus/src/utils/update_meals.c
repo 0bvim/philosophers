@@ -29,9 +29,9 @@ void	last_meal_update(t_table *table)
 	sem_post(table->philo.philo_sem);
 }
 
-t_philo_status	get_philo_state(t_table *table)
+t_st	get_philo_state(t_table *table)
 {
-	t_philo_status	state;
+	t_st	state;
 
 	sem_wait(table->philo.philo_sem);
 	state = table->philo.state;
@@ -39,7 +39,7 @@ t_philo_status	get_philo_state(t_table *table)
 	return (state);
 }
 
-void	set_philo_state(t_table *table, t_philo_status state)
+void	set_philo_state(t_table *table, t_st state)
 {
 	sem_wait(table->philo.philo_sem);
 	table->philo.state = state;

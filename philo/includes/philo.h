@@ -57,7 +57,7 @@ typedef enum e_philo_status
 	TAKE_FIRST_FORK,
 	TAKE_SECOND_FORK,
 	DIED,
-}	t_philo_status;
+}	t_st;
 
 /* MUTEX HANDLE */
 typedef enum e_mtx
@@ -151,7 +151,7 @@ bool	simulation_status(t_table *table);
 void	wait_all_threads(t_table *table);
 void	dinner_start(t_table *table);
 void	*dinner_simulation(void *data);
-void	write_status(t_philo_status status, t_philo *philo, bool debug);
+void	write_status(t_st status, t_philo *philo, bool debug);
 void	thinking(t_philo *philo, bool pre_simulation);
 void	*lonely_day(void *arg);
 

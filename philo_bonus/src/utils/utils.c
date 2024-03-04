@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/03 22:44:53 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/03 23:33:08 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	error_exit(const char *message)
 	exit (EXIT_FAILURE);
 }
 
-void	ft_usleep(long	sleep_time)
+void	ft_usleep(long sleep_time)
 {
 	long	start;
-	
+
 	start = gettime(MILLISEC);
 	while ((gettime(MILLISEC) - start) < sleep_time)
 		usleep(500);

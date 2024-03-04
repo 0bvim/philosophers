@@ -23,7 +23,7 @@
  * @param philo A pointer to the philosopher structure.
  * @param el The elapsed time since the start of the simulation.
  */
-static void	write_status_debug(t_philo_status status, t_philo *philo, long el)
+static void	write_status_debug(t_st status, t_philo *philo, long el)
 {
 	if (TAKE_FIRST_FORK == status && !simulation_status(philo->table))
 		printf(MAG"%6ld"RST" %d has taken the 1° fork 🍽"
@@ -56,7 +56,7 @@ static void	write_status_debug(t_philo_status status, t_philo *philo, long el)
  * @param philo A pointer to the philosopher structure.
  * @param debug A boolean indicating whether to print debug messages.
  */
-void	write_status(t_philo_status status, t_philo *philo, bool debug)
+void	write_status(t_st status, t_philo *philo, bool debug)
 {
 	long	elapsed;
 
