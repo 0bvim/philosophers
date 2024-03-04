@@ -6,11 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:59:35 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 13:02:36 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 03:16:37 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo_bonus.h"
+#include "philo.h"
 
 /**
  * @brief Converts a string to a long integer recursively.

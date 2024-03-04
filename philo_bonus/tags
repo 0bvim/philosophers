@@ -1,0 +1,96 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/nivicius/Documents/projects/ft/philosophers/philo/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+$(NAME)	Makefile	/^$(NAME): $(OBJECT) $(BIN_OBJ)$/;"	t
+$(OBJ)/%.o	Makefile	/^$(OBJ)\/%.o: %.c$/;"	t
+.DEFAULT_GOAL	Makefile	/^.DEFAULT_GOAL := all$/;"	m
+BLACK	Makefile	/^BLACK=\\033[30m$/;"	m
+BLUE	Makefile	/^BLUE=\\033[94m$/;"	m
+BLUE	includes/philo.h	/^# define BLUE /;"	d
+CFILES	Makefile	/^CFILES = $(addprefix $(MAIN), main.c first_check.c run.c)$/;"	m
+CFLAGS	Makefile	/^	CFLAGS = $(DFLAGS)$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=thread -pedantic -flto -MD -MP # FOR DEPENDENCIES$/;"	m
+CLEAN	Makefile	/^CLEAN = Objects delete$/;"	m
+COMP	Makefile	/^COMP = Compiling$/;"	m
+COUNT	Makefile	/^COUNT := -1$/;"	m
+CYAN	includes/philo.h	/^# define CYAN /;"	d
+DEFAULT	Makefile	/^DEFAULT=\\033[39m$/;"	m
+DFLAGS	Makefile	/^DFLAGS = -Wall -Wextra -Werror -g3 # TO DEBBUG$/;"	m
+FCLEAN	Makefile	/^FCLEAN = Program delete$/;"	m
+FFLAGS	Makefile	/^FFLAGS =  -lpthread -pthread # FLAGS THAT ONLY WORK AT THE END OF LINE (AFTER OBJECTS)$/;"	m
+GREEN	includes/philo.h	/^# define GREEN /;"	d
+HEADERS	Makefile	/^HEADERS = $(addprefix $(INC)\/, philo.h)$/;"	m
+INC	Makefile	/^INC = includes$/;"	m
+LBONUS	Makefile	/^LBONUS = $(NAME)_bonus Program compiled$/;"	m
+LFLAGS	Makefile	/^LFLAGS = -march=native # TO OPTIMIZE FOR SPECIFIC ARCHITECTURE$/;"	m
+LRED	includes/philo.h	/^# define LRED /;"	d
+MAGENTA	includes/philo.h	/^# define MAGENTA /;"	d
+MAIN	Makefile	/^MAIN = $(SRC)\/main\/$/;"	m
+MANDATORY	Makefile	/^MANDATORY = $(NAME) compiled$/;"	m
+NAME	Makefile	/^NAME = philo$/;"	m
+OBJ	Makefile	/^OBJ = obj$/;"	m
+OBJECT	Makefile	/^OBJECT = $(CFILES:%.c=$(OBJ)\/%.o)$/;"	m
+ORANGE	Makefile	/^ORANGE=\\033[93m$/;"	m
+ORANGE	includes/philo.h	/^# define ORANGE /;"	d
+PHILO_H	includes/philo.h	/^# define PHILO_H$/;"	d
+RED	includes/philo.h	/^# define RED /;"	d
+RESET	Makefile	/^RESET=\\033[0m$/;"	m
+RESET	includes/philo.h	/^# define RESET /;"	d
+RESET_TERM	Makefile	/^RESET_TERM=\\r\\033[K$/;"	m
+SHELL	Makefile	/^SHELL := \/bin\/bash$/;"	m
+SLEEP	Makefile	/^SLEEP := sleep 0.2$/;"	m
+SRC	Makefile	/^SRC = src$/;"	m
+VAL	Makefile	/^VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-o/;"	m
+VAL_TXT	Makefile	/^VAL_TXT = valgrind-out.txt$/;"	m
+WHITE	Makefile	/^WHITE=\\033[97m$/;"	m
+YELLOW	includes/philo.h	/^# define YELLOW /;"	d
+all	Makefile	/^all: $(NAME)$/;"	t
+arg_validation	src/main/first_check.c	/^static bool	arg_validation(int ac, char **av)$/;"	f	typeref:typename:bool	file:
+bonus	Makefile	/^bonus:$/;"	t
+check	src/main/first_check.c	/^void	check(int ac, char **av)$/;"	f	typeref:typename:void
+clean	Makefile	/^clean:$/;"	t
+clean	Makefile	/^define clean$/;"	m
+compile	Makefile	/^define compile$/;"	m
+compile_bonus	Makefile	/^define compile_bonus$/;"	m
+compile_source	Makefile	/^define compile_source$/;"	m
+create_objects_dir	Makefile	/^define create_objects_dir$/;"	m
+debug	Makefile	/^debug:$/;"	t
+debug	Makefile	/^define debug$/;"	m
+die	includes/philo.h	/^	double	die;$/;"	m	struct:s_time	typeref:typename:double
+eat	includes/philo.h	/^	double	eat;$/;"	m	struct:s_time	typeref:typename:double
+eraseBins	Makefile	/^define eraseBins$/;"	m
+fclean	Makefile	/^define fclean$/;"	m
+fclean	Makefile	/^fclean: clean$/;"	t
+fork	includes/philo.h	/^	t_fork	*fork;$/;"	m	struct:s_philo	typeref:typename:t_fork *
+help	Makefile	/^define help$/;"	m
+help	Makefile	/^help:$/;"	t
+is_digit	src/main/first_check.c	/^static bool	is_digit(char c)$/;"	f	typeref:typename:bool	file:
+left	includes/philo.h	/^	int	left;$/;"	m	struct:s_fork	typeref:typename:int
+main	src/main/main.c	/^int	main(int ac, char **av)$/;"	f	typeref:typename:int
+ph_qty	includes/philo.h	/^	int		ph_qty;$/;"	m	struct:s_table	typeref:typename:int
+philo	includes/philo.h	/^	t_philo	*philo;$/;"	m	struct:s_table	typeref:typename:t_philo *
+philo_must_eat_off	src/main/run.c	/^static void	philo_must_eat_off(int ac, char **av)$/;"	f	typeref:typename:void	file:
+philo_must_eat_on	src/main/run.c	/^static void	philo_must_eat_on(int ac, char **av)$/;"	f	typeref:typename:void	file:
+print_helper	src/main/first_check.c	/^static void	print_helper(void)$/;"	f	typeref:typename:void	file:
+re	Makefile	/^re: fclean all$/;"	t
+right	includes/philo.h	/^	int	right;$/;"	m	struct:s_fork	typeref:typename:int
+run	src/main/run.c	/^void	run(int ac, char **av)$/;"	f	typeref:typename:void
+s_fork	includes/philo.h	/^typedef struct s_fork$/;"	s
+s_philo	includes/philo.h	/^typedef struct s_philo$/;"	s
+s_table	includes/philo.h	/^typedef struct s_table$/;"	s
+s_time	includes/philo.h	/^typedef struct s_time$/;"	s
+sleep	includes/philo.h	/^	double	sleep;$/;"	m	struct:s_time	typeref:typename:double
+t_fork	includes/philo.h	/^}	t_fork;$/;"	t	typeref:struct:s_fork
+t_philo	includes/philo.h	/^}	t_philo;$/;"	t	typeref:struct:s_philo
+t_table	includes/philo.h	/^}	t_table;$/;"	t	typeref:struct:s_table
+t_time	includes/philo.h	/^}	t_time;$/;"	t	typeref:struct:s_time
+time	includes/philo.h	/^	t_time	*time;$/;"	m	struct:s_philo	typeref:typename:t_time *
+time	includes/philo.h	/^	t_time	*time;$/;"	m	struct:s_table	typeref:typename:t_time *

@@ -6,11 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 15:50:51 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/02 03:27:25 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philo.h"
 
 /**
  * @brief Retrieves the current time.
@@ -52,31 +52,32 @@ void	error_exit(const char *message)
 	exit (EXIT_FAILURE);
 }
 
-void	ft_usleep(long sleep_time)
+/**
+ * @brief Sleeps for a precise amount of time.
+ *
+ * This function sleeps for a precise amount of time specified in microseconds, ensuring accuracy
+ * by continuously checking the elapsed time until the desired duration is reached.
+ *
+ * @param usec The duration to sleep in microseconds.
+ * @param table A pointer to the table structure containing information about the dining philosophers.
+ */
+void	precise_usleep(long usec, t_table *table)
 {
 	long	start;
+	long	elapsed;
+	long	remaining;
 
 	start = gettime(MICROSEC);
-	while ((gettime(MICROSEC) - start) < sleep_time)
-		usleep(500);
-}
-
-void	sleep_even(t_table *table)
-{
-	if (table->philo.id % 2 == 0)
-		ft_usleep(table->eat - 10);
-}
-
-int	print_msg(t_table *table, char *msg)
-{
-	sem_wait(table->sem_print);
-	if (someone_died())
+	while (gettime(MICROSEC) - start < usec)
 	{
-		sem_post(table->sem_print);
-		return (1);
+		if (simulation_status(table))
+			break ;
+		elapsed = gettime(MICROSEC) - start;
+		remaining = usec - elapsed;
+		if (remaining > 1e3)
+			usleep(remaining / 2);
+		else
+			while (gettime(MICROSEC) - start < usec)
+				;
 	}
-	printf("%ld %d %s\n", gettime(MILLISEC) - table->start,
-		table->philo.id, msg);
-	sem_post(table->sem_print);
-	return (0);
 }
