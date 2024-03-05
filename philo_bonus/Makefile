@@ -37,7 +37,7 @@ INC = includes
 OBJ = obj
 
 # includes #
-HEADERS = $(addprefix $(INC)/, philo.h)
+HEADERS = $(addprefix $(INC)/, philo_bonus.h)
 
 # files path #
 MAIN = $(SRC)/main/

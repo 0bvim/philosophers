@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-frei <vde-frei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 19:47:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:51:06 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ void	init(t_table *table)
 	table->th_nbr = 0;
 	table->philo = safe_malloc(sizeof(t_philo) * table->ph_nb);
 	table->fork = safe_malloc(sizeof(t_fork) * table->ph_nb);
-	safe_mtx_handle(&table->write_mtx, INIT);
-	safe_mtx_handle(&table->table_mtx, INIT);
-	while (++i < table->ph_nb)
-	{
-		safe_mtx_handle(&table->fork[i].fork, INIT);
-		table->fork[i].id = i;
-	}
+	table->fork->fork = sem_open(S_FORKS, O_CREAT, S_IRWXU, table->ph_nb);
+	if (table->fork->fork == SEM_FAILED)
+		error_exit("SEM_OPEN ERROR");
+
 	philo_init(table);
 }
 

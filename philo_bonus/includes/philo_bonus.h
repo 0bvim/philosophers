@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 20:00:59 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:50:43 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <semaphore.h>
+# include <fcntl.h>
 
 /**
  * for definitions and types
@@ -41,6 +42,12 @@
 # define RST "\033[0m"
 # define MAG "\033[95m"
 # define LRED "\033[91m"
+
+/* semaphores definitions */
+# define S_FORKS "/forks"
+# define S_MEAL "/meal"
+# define S_PRINT "/print"
+# define S_DEATH "/lock_death"
 
 /* ANOTHER ENUMS */
 enum	e_philo
@@ -91,7 +98,7 @@ typedef struct s_philo	t_philo;
 typedef struct s_fork
 {
 	int		id;
-	t_mtx	fork;
+	sem_t	*fork;
 }	t_fork;
 
 typedef struct s_table
