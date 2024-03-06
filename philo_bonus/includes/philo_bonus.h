@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/05 21:02:05 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:51:47 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,5 +167,11 @@ void	increase_long(t_mtx *mutex, long *value);
 void	unsync_philos(t_philo *philo);
 bool	threads_running(t_mtx *mtx, long *threads, long ph_nb);
 void	*monitor(void *data);
+
+/* str */
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_itoa(int n);
+char	*ft_strdup(const char *s);
+char	*ft_strmerge(char *s1, char *s2);
 
 #endif //!PHILO_H

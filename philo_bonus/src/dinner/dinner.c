@@ -3,29 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   dinner.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-frei <vde-frei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 19:47:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:41:06 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <unistd.h>
 
 static void	eat(t_philo *philo);
 
-/**
- * @brief Starts the dinner simulation on the specified table.
- *
- * This function starts the dinner simulation on the specified table by
- * creating threads for each philosopher and a monitor thread.
- * It sets the start time of the simulation, ensures all philosophers
- * are ready to start, waits for all philosopher threads and
- * the monitor thread to finish, and then marks the end of the simulation.
- *
- * @param table A pointer to the table structure containing information
- * about the dining philosophers and their state.
- */
+void	set_philo(t_table *philo, int i)
+{
+	char	*sem_name;
+
+	sem_name = ft_strmerge(ft_strdup("/philo_"), ft_strdup(ft_itoa(id)));
+}
+
+void	creat_process(t_table *table)
+{
+	int	i;
+	pid_t	p_id;
+
+	i = -1;
+	while (++i < table->ph_nb)
+	{
+		p_id = fork();
+		set_philo(t_table *table, int i);
+		
+	}
+
+}
+
 void	dinner_start(t_table *table)
 {
 	int	i;
@@ -34,8 +45,7 @@ void	dinner_start(t_table *table)
 	if (0 == table->max_meals)
 		return ;
 	else if (1 == table->ph_nb)
-		safe_thread_handle(&table->philo[0].th_id, lonely_day,
-			&table->philo[0], CREATE);
+		lonely_day(t_table *table); //TODO: Fix function to work with fork instead thread
 	else
 		while (++i < table->ph_nb)
 			safe_thread_handle(&table->philo[i].th_id, dinner_simulation,

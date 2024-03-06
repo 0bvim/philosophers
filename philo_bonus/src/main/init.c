@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/05 21:11:11 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:15:22 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ static void	philo_init(t_table *table)
 		philo->full = false;
 		philo->meals = 0;
 		philo->table = table;
-		safe_mtx_handle(&philo->philo_mtx, INIT);
-		assign_forks (philo, table->fork, i);
+		// assign_forks (philo, table->fork, i);
 	}
 }
 
@@ -76,16 +75,16 @@ static void	philo_init(t_table *table)
  * @param fork An array of forks to be assigned.
  * @param position The position of the philosopher in the array.
  */
-static void	assign_forks(t_philo *philo, t_fork *fork, int position)
-{
-	int	philo_nbr;
-
-	philo_nbr = philo->table->ph_nb;
-	philo->first_fork = &fork[(position + 1) % philo_nbr];
-	philo->second_fork = &fork[position];
-	if (philo->id % 2 == 0)
-	{
-		philo->first_fork = &fork[position];
-		philo->second_fork = &fork[(position + 1) % philo_nbr];
-	}
-}
+// static void	assign_forks(t_philo *philo, int position)
+// {
+// 	int	philo_nbr;
+//
+// 	philo_nbr = philo->table->ph_nb;
+// 	philo->first_fork = &fork[(position + 1) % philo_nbr];
+// 	philo->second_fork = &fork[position];
+// 	if (philo->id % 2 == 0)
+// 	{
+// 		philo->first_fork = &fork[position];
+// 		philo->second_fork = &fork[(position + 1) % philo_nbr];
+// 	}
+// }
