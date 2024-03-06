@@ -6,11 +6,13 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:15:45 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:33:57 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <stdlib.h>
+#include <sys/wait.h>
 
 static void	eat(t_philo *philo);
 
@@ -37,10 +39,18 @@ void	creat_process(t_table *table)
 	while (++i < table->ph_nb)
 	{
 		p_id = fork();
-		set_philo(t_table *table, int i);
-		
+		if (!p_id)
+		{
+			set_philo(table, i);
+			dinner_simulation((void *)(table->philo + i));
+		}
+		else if (p_id == -1)
+			error_exit("Fork Error");
 	}
-
+	p_id = waitpid(0, NULL, 0);
+	while (p_id != -1)
+		p_id = waitpid(0, NULL, 0);
+	return ;
 }
 
 void	dinner_start(t_table *table)
@@ -51,18 +61,16 @@ void	dinner_start(t_table *table)
 	if (0 == table->max_meals)
 		return ;
 	else if (1 == table->ph_nb)
-		lonely_day(t_table *table); //TODO: Fix function to work with fork instead thread
+		lonely_day(table);
 	else
-		while (++i < table->ph_nb)
-			safe_thread_handle(&table->philo[i].th_id, dinner_simulation,
-				&table->philo[i], CREATE);
+		creat_process(table);
 	safe_thread_handle(&table->monitor, monitor, table, CREATE);
 	table->start = gettime(MILLISEC);
-	set_bool(&table->table_mtx, &table->all_up, true);
+	set_bool(table->table_mtx, &table->all_up, true);
 	i = -1;
 	while (++i < table->ph_nb)
 		safe_thread_handle(&table->philo[i].th_id, NULL, NULL, JOIN);
-	set_bool(&table->table_mtx, &table->end, true);
+	set_bool(table->table_mtx, &table->end, true);
 	safe_thread_handle(&table->monitor, NULL, NULL, JOIN);
 }
 
@@ -115,18 +123,18 @@ void	*dinner_simulation(void *data)
  */
 static void	eat(t_philo *philo)
 {
-	safe_mtx_handle(philo->firts_fork, NULL);
+	safe_mtx_handle(philo->firts_fork, LOCK, NULL);
 	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
 	safe_mtx_handle(philo->second_fork, LOCK, NULL);
 	write_status(TAKE_SECOND_FORK, philo, DEBUG_MODE);
-	set_long(&philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
+	set_long(philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
 	philo->meals++;
 	write_status(EATING, philo, DEBUG_MODE);
 	precise_usleep(philo->table->eat, philo->table);
 	if (philo->table->max_meals > 0 && philo->meals == philo->table->max_meals)
-		set_bool(&philo->philo_mtx, &philo->full, true);
-	safe_mtx_handle(&philo->first_fork->fork, UNLOCK);
-	safe_mtx_handle(&philo->second_fork->fork, UNLOCK);
+		set_bool(philo->philo_mtx, &philo->full, true);
+	safe_mtx_handle(philo->firts_fork, UNLOCK, NULL);
+	safe_mtx_handle(philo->second_fork, UNLOCK, NULL);
 }
 
 /**
@@ -180,8 +188,8 @@ void	*lonely_day(void *arg)
 
 	philo = (t_philo *)arg;
 	wait_all_threads(philo->table);
-	set_long(&philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
-	increase_long(&philo->table->table_mtx, &philo->table->th_nbr);
+	set_long(philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
+	increase_long(philo->table->table_mtx, &philo->table->th_nbr);
 	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
 	while (!simulation_status(philo->table))
 		precise_usleep(200, philo->table);

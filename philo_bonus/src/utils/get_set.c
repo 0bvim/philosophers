@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 00:55:56 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:13:15 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:20:05 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
  * @param dst A pointer to the boolean value to be set.
  * @param value The value to set.
  */
-void	set_bool(t_mtx *mtx, bool *dst, bool value)
+void	set_bool(sem_t *mtx, bool *dst, bool value)
 {
-	safe_mtx_handle(mtx, LOCK);
+	safe_mtx_handle(mtx, LOCK, NULL);
 	*dst = value;
-	safe_mtx_handle(mtx, UNLOCK);
+	safe_mtx_handle(mtx, UNLOCK, NULL);
 }
 
 /**

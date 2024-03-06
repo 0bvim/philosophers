@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:16:01 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 16:27:14 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:34:30 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ void	unsync_philos(t_philo *philo)
  * @param ph_nb The total number of threads expected to run.
  * @return true if all threads are running, false otherwise.
  */
-bool	threads_running(t_mtx *mtx, long *threads, long ph_nb)
+bool	threads_running(sem_t *mtx, long *threads, long ph_nb)
 {
 	bool	ret;
 
 	ret = false;
-	safe_mtx_handle(mtx, LOCK);
+	safe_mtx_handle(mtx, LOCK, NULL);
 	if (*threads == ph_nb)
 		ret = true;
-	safe_mtx_handle(mtx, UNLOCK);
+	safe_mtx_handle(mtx, UNLOCK, NULL);
 	return (ret);
 }
