@@ -6,20 +6,26 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 15:41:06 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:58:19 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-#include <unistd.h>
 
 static void	eat(t_philo *philo);
 
-void	set_philo(t_table *philo, int i)
+void	set_philo(t_table *table, int id)
 {
 	char	*sem_name;
 
 	sem_name = ft_strmerge(ft_strdup("/philo_"), ft_strdup(ft_itoa(id)));
+	if (!sem_name)
+		error_exit("malloc error");
+	sem_unlink(sem_name);
+	table->philo->philo_mtx = sem_open(sem_name, O_CREAT, 0666, 1);
+	sem_unlink(sem_name);
+	free(sem_name);
+	table->philo->id = id + 1;
 }
 
 void	creat_process(t_table *table)

@@ -6,12 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:46:26 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 20:22:21 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:52:34 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-#include <semaphore.h>
 
 /**
  * @brief Safely allocates memory.
