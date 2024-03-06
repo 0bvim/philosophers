@@ -6,11 +6,13 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:40:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:03:16 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <fcntl.h>
+#include <semaphore.h>
 
 static void	philo_init(t_table *table);
 
@@ -35,6 +37,9 @@ void	init(t_table *table)
 		sem_exit("Failed to open the semaphore", table->fork, NULL);
 	table->write_mtx = sem_open(S_PRINT, O_CREAT, S_IRWXU, ONE);
 	if (table->write_mtx == SEM_FAILED)
+		sem_exit("Failed to open the semaphore", table->fork, table->write_mtx);
+	table->table_mtx = sem_open(S_TABLE, O_CREAT, S_IRWXU, ONE);
+	if (table->table_mtx == SEM_FAILED)
 		sem_exit("Failed to open the semaphore", table->fork, table->write_mtx);
 	philo_init(table);
 }
@@ -61,6 +66,5 @@ static void	philo_init(t_table *table)
 		philo->full = false;
 		philo->meals = 0;
 		philo->table = table;
-		// assign_forks (philo, table->fork, i);
 	}
 }

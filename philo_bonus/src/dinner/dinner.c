@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:33:57 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:01:18 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ void	creat_process(t_table *table)
 	{
 		p_id = fork();
 		if (!p_id)
-		{
 			set_philo(table, i);
-			dinner_simulation((void *)(table->philo + i));
-		}
 		else if (p_id == -1)
 			error_exit("Fork Error");
 	}
+	dinner_simulation(table->philo + i);
 	p_id = waitpid(0, NULL, 0);
 	while (p_id != -1)
 		p_id = waitpid(0, NULL, 0);
