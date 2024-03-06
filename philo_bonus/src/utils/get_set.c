@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 00:55:56 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 16:25:40 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:13:15 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ void	set_long(sem_t *mtx, long *dst, long value)
  * @param value A pointer to the long integer value to be retrieved.
  * @return The retrieved long integer value.
  */
-long	get_long(t_mtx *mtx, long *value)
+long	get_long(sem_t *mtx, long *value)
 {
 	long	ret;
 
-	safe_mtx_handle(mtx, LOCK);
+	sem_wait(mtx);
 	ret = *value;
-	safe_mtx_handle(mtx, UNLOCK);
+	sem_post(mtx);
 	return (ret);
 }
 
@@ -97,5 +97,5 @@ long	get_long(t_mtx *mtx, long *value)
  */
 bool	simulation_status(t_table *table)
 {
-	return (get_bool(&table->table_mtx, &table->end));
+	return (get_bool(table->table_mtx, &table->end));
 }

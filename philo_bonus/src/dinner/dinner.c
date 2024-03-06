@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 16:28:11 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:15:45 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ void	*dinner_simulation(void *data)
  */
 static void	eat(t_philo *philo)
 {
-	safe_mtx_handle(&philo->first_fork->fork, LOCK);
+	safe_mtx_handle(philo->firts_fork, NULL);
 	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
-	safe_mtx_handle(&philo->second_fork->fork, LOCK);
+	safe_mtx_handle(philo->second_fork, LOCK, NULL);
 	write_status(TAKE_SECOND_FORK, philo, DEBUG_MODE);
 	set_long(&philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
 	philo->meals++;

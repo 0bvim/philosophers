@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 16:27:37 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:14:32 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ struct s_philo
 	long		meals;
 	long		last_meal;
 	sem_t		*philo_mtx;
+	sem_t		*firts_fork;
+	sem_t		*second_fork;
 	t_table		*table;
 	pthread_t	th_id;
 };
@@ -142,7 +144,7 @@ void	sem_exit(char *msg, sem_t *to_close, sem_t *to_close2);
 void	*safe_malloc(size_t bytes);
 void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 			void *data, t_code opcode);
-void	safe_mtx_handle(sem_t *mutex, t_code opcode);
+void	safe_mtx_handle(sem_t *mutex, t_code opcode, char *name);
 
 /* function to error */
 void	error_exit(const char *message);
@@ -151,7 +153,7 @@ void	error_exit(const char *message);
 void	set_bool(t_mtx *mtx, bool *dst, bool value);
 bool	get_bool(sem_t *mtx, bool *value);
 void	set_long(sem_t *mtx, long *dst, long value);
-long	get_long(t_mtx *mtx, long *value);
+long	get_long(sem_t *mtx, long *value);
 bool	simulation_status(t_table *table);
 
 /* dinner */

@@ -6,11 +6,12 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:46:26 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 15:52:34 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:16:19 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <semaphore.h>
 
 /**
  * @brief Safely allocates memory.
@@ -126,13 +127,13 @@ static void	handle_mtx_error(int status, t_code opcode)
 void	safe_mtx_handle(sem_t *mutex, t_code opcode, char *name)
 {
 	if (OPEN == opcode)
-		handle_mtx_error(sem_open(name, 0666, )_, opcode);
+		sem_open(name, O_CREAT, 0644, ONE);
 	else if (LOCK == opcode)
-		handle_mtx_error(pthread_mutex_lock(mutex), opcode);
+		handle_mtx_error(sem_wait(mutex), opcode);
 	else if (UNLOCK == opcode)
-		handle_mtx_error(pthread_mutex_unlock(mutex), opcode);
+		handle_mtx_error(sem_post(mutex), opcode);
 	else if (DESTROY == opcode)
-		handle_mtx_error(pthread_mutex_destroy(mutex), opcode);
+		handle_mtx_error(sem_unlink(name), opcode);
 	else
 		error_exit("Invalid operation code.");
 }
