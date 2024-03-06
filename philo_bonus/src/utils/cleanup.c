@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:38:01 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/05 21:06:18 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:42:17 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,9 @@
  */
 void	clean(t_table *table)
 {
-	t_philo	*philo;
-	int		i;
 
-	i = -1;
-	while (++i < table->ph_nb)
-	{
-		philo = table->philo + i;
-		safe_mtx_handle(&philo->philo_mtx, DESTROY);
-	}
-	safe_mtx_handle(&table->write_mtx, DESTROY);
-	safe_mtx_handle(&table->table_mtx, DESTROY);
+	safe_mtx_handle(table->write_mtx, DESTROY, NULL);
+	safe_mtx_handle(table->table_mtx, DESTROY, NULL);
 	free(table->fork);
 	free(table->philo);
 }
@@ -45,5 +37,5 @@ void	sem_exit(char *msg, sem_t *to_close, sem_t *to_close2)
 		sem_close(to_close);
 	if (to_close2)
 		sem_close(to_close2);
-	error_exit("Failed to open the semaphore.");
+	error_exit(msg);
 }

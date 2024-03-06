@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-frei <vde-frei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:34:27 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 19:47:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:36:36 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*monitor(void *data)
 	t_table	*table;
 
 	table = (t_table *)data;
-	while (!threads_running(&table->table_mtx, &table->th_nbr, table->ph_nb))
+	while (!threads_running(table->table_mtx, &table->th_nbr, table->ph_nb))
 		;
 	while (!simulation_status(table))
 	{
@@ -45,7 +45,7 @@ void	*monitor(void *data)
 			if (philo_died(table->philo + i))
 			{
 				write_status(DIED, table->philo + i, DEBUG_MODE);
-				set_bool(&table->table_mtx, &table->end, true);
+				set_bool(table->table_mtx, &table->end, true);
 			}
 		}
 	}
@@ -68,9 +68,9 @@ static bool	philo_died(t_philo *ph)
 	long	elapsed;
 	long	t_to_die;
 
-	if (get_bool(&ph->philo_mtx, &ph->full))
+	if (get_bool(ph->philo_mtx, &ph->full))
 		return (false);
-	elapsed = gettime(MILLISEC) - get_long(&ph->philo_mtx, &ph->last_meal);
+	elapsed = gettime(MILLISEC) - get_long(ph->philo_mtx, &ph->last_meal);
 	t_to_die = ph->table->die / 1e3;
 	if (elapsed > t_to_die)
 		return (true);
