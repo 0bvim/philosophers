@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/05 18:50:43 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:02:05 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef enum e_mtx
 	POST,
 	WAIT,
 	UNLINK,
+	ONE = 1,
 }	t_code;
 
 /* HANDLE TIME */
@@ -94,12 +95,6 @@ typedef enum e_time_code
 
 typedef pthread_mutex_t	t_mtx;
 typedef struct s_philo	t_philo;
-
-typedef struct s_fork
-{
-	int		id;
-	sem_t	*fork;
-}	t_fork;
 
 typedef struct s_table
 {
@@ -114,7 +109,7 @@ typedef struct s_table
 	long		th_nbr;
 	sem_t		*table_mtx;
 	sem_t		*write_mtx;
-	t_fork		*fork;
+	sem_t		*fork;
 	t_philo		*philo;
 	pthread_t	monitor;
 }	t_table;
@@ -126,8 +121,6 @@ struct s_philo
 	long		meals;
 	long		last_meal;
 	sem_t		*philo_mtx;
-	t_fork		*first_fork;
-	t_fork		*second_fork;
 	t_table		*table;
 	pthread_t	th_id;
 };
@@ -143,6 +136,7 @@ void	clean(t_table *table);
 long	ft_atol(const char *nptr);
 long	gettime(t_time_code time_code);
 void	precise_usleep(long usec, t_table *table);
+void	sem_exit(char *msg, sem_t *to_close, sem_t *to_close2);
 
 /* wrapper functions */
 void	*safe_malloc(size_t bytes);
