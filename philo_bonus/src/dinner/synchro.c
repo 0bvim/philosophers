@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   synchro.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-frei <vde-frei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:16:01 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 19:47:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:27:14 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <semaphore.h>
 
 /**
  * @brief Waits for all threads to be ready.
@@ -23,7 +24,7 @@
  */
 void	wait_all_threads(t_table *table)
 {
-	while (!get_bool(&table->table_mtx, &table->all_up))
+	while (!get_bool(table->table_mtx, &table->all_up))
 		;
 }
 
@@ -36,11 +37,11 @@ void	wait_all_threads(t_table *table)
  * @param mutex A pointer to the mutex structure used for synchronization.
  * @param value A pointer to the long integer value to be increased.
  */
-void	increase_long(t_mtx *mutex, long *value)
+void	increase_long(sem_t *mutex, long *value)
 {
-	safe_mtx_handle(mutex, LOCK);
+	sem_wait(mutex);
 	(*value)++;
-	safe_mtx_handle(mutex, UNLOCK);
+	sem_post(mutex);
 }
 
 /**

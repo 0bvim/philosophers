@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-frei <vde-frei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 00:55:56 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 19:47:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:25:40 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <semaphore.h>
 
 /**
  * @brief Sets a boolean value with mutex locking.
@@ -38,13 +39,13 @@ void	set_bool(t_mtx *mtx, bool *dst, bool value)
  * @param value A pointer to the boolean value to be retrieved.
  * @return The retrieved boolean value.
  */
-bool	get_bool(t_mtx *mtx, bool *value)
+bool	get_bool(sem_t *mtx, bool *value)
 {
 	bool	ret;
 
-	safe_mtx_handle(mtx, LOCK);
+	sem_wait(mtx);
 	ret = *value;
-	safe_mtx_handle(mtx, UNLOCK);
+	sem_post(mtx);
 	return (ret);
 }
 
@@ -58,11 +59,11 @@ bool	get_bool(t_mtx *mtx, bool *value)
  * @param dst A pointer to the long integer value to be set.
  * @param value The value to set.
  */
-void	set_long(t_mtx *mtx, long *dst, long value)
+void	set_long(sem_t *mtx, long *dst, long value)
 {
-	safe_mtx_handle(mtx, LOCK);
+	sem_wait(mtx);
 	*dst = value;
-	safe_mtx_handle(mtx, UNLOCK);
+	sem_post(mtx);
 }
 
 /**

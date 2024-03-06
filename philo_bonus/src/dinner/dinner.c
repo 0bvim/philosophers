@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 15:58:19 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:28:11 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void	*dinner_simulation(void *data)
 
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
-	set_long(&philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
-	increase_long(&philo->table->table_mtx, &philo->table->th_nbr);
+	set_long(philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
+	increase_long(philo->table->table_mtx, &philo->table->th_nbr);
 	unsync_philos(philo);
 	while (!simulation_status(philo->table))
 	{
-		if (get_bool(&philo->philo_mtx, &philo->full))
+		if (get_bool(philo->philo_mtx, &philo->full))
 			break ;
 		eat(philo);
 		write_status(SLEEPING, philo, DEBUG_MODE);

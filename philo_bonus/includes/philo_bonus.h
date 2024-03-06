@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 15:51:47 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:27:37 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,8 @@ void	error_exit(const char *message);
 
 /* get, set and verify functions */
 void	set_bool(t_mtx *mtx, bool *dst, bool value);
-bool	get_bool(t_mtx *mtx, bool *value);
-void	set_long(t_mtx *mtx, long *dst, long value);
+bool	get_bool(sem_t *mtx, bool *value);
+void	set_long(sem_t *mtx, long *dst, long value);
 long	get_long(t_mtx *mtx, long *value);
 bool	simulation_status(t_table *table);
 
@@ -163,7 +163,7 @@ void	thinking(t_philo *philo, bool pre_simulation);
 void	*lonely_day(void *arg);
 
 /* syncro */
-void	increase_long(t_mtx *mutex, long *value);
+void	increase_long(sem_t *mutex, long *value);
 void	unsync_philos(t_philo *philo);
 bool	threads_running(t_mtx *mtx, long *threads, long ph_nb);
 void	*monitor(void *data);
