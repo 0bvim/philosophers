@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:38:01 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:42:17 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:32:06 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ void	clean(t_table *table)
 	free(table->philo);
 }
 
-void	sem_exit(char *msg, sem_t *to_close, sem_t *to_close2)
+void	sem_exit(char *msg, t_table *table)
 {
-	if (to_close)
-		sem_close(to_close);
-	if (to_close2)
-		sem_close(to_close2);
+	if (table->table_mtx)
+		sem_close(table->table_mtx);
+	if (table->write_mtx)
+		sem_close(table->write_mtx);
+	if (table->fork)
+		sem_close(table->fork);
 	error_exit(msg);
 }

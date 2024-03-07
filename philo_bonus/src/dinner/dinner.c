@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:33:57 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:42:52 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	set_philo(t_table *table, int id)
 {
 	char	*sem_name;
 
+	sem_name = NULL;
 	sem_name = ft_strmerge(ft_strdup("/philo_"), ft_strdup(ft_itoa(id)));
 	if (!sem_name)
 		error_exit("malloc error");
@@ -46,11 +47,15 @@ void	creat_process(t_table *table)
 		}
 		else if (p_id == -1)
 			error_exit("Fork Error");
+		safe_thread_handle(&table->monitor, monitor, table, CREATE);
+		table->start = gettime(MILLISEC);
+		set_bool(table->table_mtx, &table->all_up, true);
+		i = -1;
+		while (++i < table->ph_nb)
+			safe_thread_handle(&table->philo[i].th_id, NULL, NULL, JOIN);
+		set_bool(table->table_mtx, &table->end, true);
+		safe_thread_handle(&table->monitor, NULL, NULL, JOIN);
 	}
-	p_id = waitpid(0, NULL, 0);
-	while (p_id != -1)
-		p_id = waitpid(0, NULL, 0);
-	return ;
 }
 
 void	dinner_start(t_table *table)
@@ -187,7 +192,7 @@ void	*lonely_day(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	wait_all_threads(philo->table);
+	// wait_all_threads(philo->table);
 	set_long(philo->philo_mtx, &philo->last_meal, gettime(MILLISEC));
 	increase_long(philo->table->table_mtx, &philo->table->th_nbr);
 	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);

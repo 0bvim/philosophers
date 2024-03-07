@@ -544,5 +544,68 @@
    "src/utils/cleanup.c"
   ],
   "file": "src/utils/cleanup.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/ft_itoa.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/ft_itoa.c"
+  ],
+  "file": "src/utils/ft_itoa.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/ft_strjoin.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/ft_strjoin.c"
+  ],
+  "file": "src/utils/ft_strjoin.c"
+ },
+ {
+  "directory": "/nfs/homes/vde-frei/common_core/philosophers/philo_bonus",
+  "arguments": [
+   "cc",
+   "-o",
+   "obj/src/utils/handling_str.o",
+   "-I./includes/",
+   "-DDEBUG",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g3",
+   "-pedantic",
+   "-flto",
+   "-MD",
+   "-MP",
+   "-c",
+   "src/utils/handling_str.c"
+  ],
+  "file": "src/utils/handling_str.c"
  }
 ]

@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:34:49 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:30:59 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 
 /* semaphores definitions */
 # define S_FORKS "/forks"
-# define S_MEAL "/meal"
+# define S_TABLE "/table"
 # define S_PRINT "/print"
 # define S_DEATH "/lock_death"
 
@@ -139,7 +139,7 @@ void	clean(t_table *table);
 long	ft_atol(const char *nptr);
 long	gettime(t_time_code time_code);
 void	precise_usleep(long usec, t_table *table);
-void	sem_exit(char *msg, sem_t *to_close, sem_t *to_close2);
+void	sem_exit(char *msg, t_table *table);
 
 /* wrapper functions */
 void	*safe_malloc(size_t bytes);

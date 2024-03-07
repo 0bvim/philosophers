@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:16:01 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:34:30 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:36:46 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ bool	threads_running(sem_t *mtx, long *threads, long ph_nb)
 	bool	ret;
 
 	ret = false;
-	safe_mtx_handle(mtx, LOCK, NULL);
+	safe_mtx_handle(mtx, OPEN, NULL);
 	if (*threads == ph_nb)
 		ret = true;
 	safe_mtx_handle(mtx, UNLOCK, NULL);

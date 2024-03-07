@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:40:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:27:43 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ void	init(t_table *table)
 	table->philo = safe_malloc(sizeof(t_philo) * table->ph_nb);
 	table->fork = sem_open(S_FORKS, O_CREAT, S_IRWXU, table->ph_nb);
 	if (table->fork == SEM_FAILED)
-		sem_exit("Failed to open the semaphore", table->fork, NULL);
+		sem_exit("Failed to open the semaphore", table);
 	table->write_mtx = sem_open(S_PRINT, O_CREAT, S_IRWXU, ONE);
 	if (table->write_mtx == SEM_FAILED)
-		sem_exit("Failed to open the semaphore", table->fork, table->write_mtx);
+		sem_exit("Failed to open the semaphore", table);
+	table->table_mtx = sem_open(S_TABLE, O_CREAT, S_IRWXU, ONE);
+	if (table->table_mtx == SEM_FAILED)
+		sem_exit("Failed to open the semaphore", table);
 	philo_init(table);
 }
 
