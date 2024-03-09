@@ -3,26 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-frei <vde-frei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:46:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/04 19:47:31 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:47:00 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-/**
- * @brief Parses input arguments and initializes part of the dining table.
- *
- * This function parses the input arguments provided from the command line and
- * initializes the dining table structure accordingly. It sets the number of
- * philosophers, time to die, time to eat, time to sleep,
- * and maximum number of meals.
- *
- * @param table A pointer to the table structure to be initialized.
- * @param av An array of strings containing the command-line arguments.
- */
+static void	philo_init(t_table *table)
+{
+	int		i;
+	char	semaphores[250];
+
+	i = -1;
+	while (++i < table->ph_nb)
+	{
+		table->philo[i].is_eating = false;
+		table->philo[i].position = i;
+		table->philo[i].left_fork = i;
+		table->philo[i].right_fork = (i + 1) % table->ph_nb;
+		table->philo[i].table = table;
+		//TODO: make function to build semaphores name
+	}
+}
+
 void	parser_input(t_table *table, char **av)
 {
 	table->ph_nb = ft_atol(av[1]);
@@ -35,4 +41,10 @@ void	parser_input(t_table *table, char **av)
 		table->max_meals = ft_atol(av[5]);
 	else
 		table->max_meals = -1;
+	table->fork_mtx = NULL;
+	table->philo = (t_philo*)safe_malloc(sizeof(*(table->philo)) * table->ph_nb);
+	//TODO: init philos
+	//TODO: init semaphores
+		
+
 }
