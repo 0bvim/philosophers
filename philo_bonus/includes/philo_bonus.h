@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:34:49 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:32:07 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,32 +100,31 @@ typedef struct s_philo	t_philo;
 typedef struct s_table
 {
 	int			ph_nb;
-	int			max_meals;
+	long		die;
 	long		eat;
 	long		sleep;
-	long		die;
+	int			max_meals;
 	long		start;
-	bool		end;
-	bool		all_up;
-	long		th_nbr;
-	sem_t		*table_mtx;
-	sem_t		*write_mtx;
-	sem_t		*fork;
 	t_philo		*philo;
-	pthread_t	monitor;
+	sem_t		*fork_mtx;
+	sem_t		*write_mtx;
+	sem_t		*dead_write_mtx;
+	sem_t		*have_died_mtx;
 }	t_table;
 
 struct s_philo
 {
-	int			id;
-	bool		full;
-	long		meals;
+	pid_t		pid;
+	int			position;
+	bool		is_eating;
+	long		eat_count;
+	long		limit;
 	long		last_meal;
-	sem_t		*philo_mtx;
-	sem_t		*firts_fork;
-	sem_t		*second_fork;
+	int			left_fork;
+	int			right_fork;
+	sem_t		*mutex;
+	sem_t		*eat_count_mtx;
 	t_table		*table;
-	pthread_t	th_id;
 };
 
 /* entrance function */
