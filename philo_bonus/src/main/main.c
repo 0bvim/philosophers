@@ -6,19 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 22:30:14 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 23:19:08 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-#include <bits/pthreadtypes.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <signal.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <unistd.h>
-
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -136,6 +128,27 @@ void	eat(t_philo *philo)
 	philo->is_eating = 0;
 	sem_post(philo->mutex);
 	sem_post(philo->eat_count_mtx);
+}
+
+void	*monitor(void *philo_v)
+{
+	t_philo	*philo;
+
+	philo = (t_philo*)philo_v;
+	while (true)
+	{
+		sem_wait(philo->mutex);
+		if (!philo->is_eating && get_time() > philo->limit)
+		{
+			display_message(philo, DIED);
+			sem_post(philo->mutex);
+			sem_post(philo->table->have_died_mtx);
+			return ((void*)0);
+		}
+		sem_post(philo->mutex);
+		usleep(1000);
+	}
+	return ((void*)0);
 }
 
 void	routine(t_philo *philo_v)

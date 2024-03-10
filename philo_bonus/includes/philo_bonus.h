@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 22:34:19 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 23:22:09 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <signal.h>
+# include <bits/pthreadtypes.h>
 # include <unistd.h>
 # include <sys/time.h>
 # include <sys/wait.h>
@@ -70,33 +72,6 @@ typedef enum e_philo_status
 	FULL,
 }	t_st;
 
-/* MUTEX HANDLE */
-typedef enum e_mtx
-{
-	CREATE,
-	INIT,
-	LOCK,
-	UNLOCK,
-	DESTROY,
-	DETACH,
-	JOIN,
-	OPEN,
-	CLOSE,
-	POST,
-	WAIT,
-	UNLINK,
-	ONE = 1,
-}	t_code;
-
-/* HANDLE TIME */
-typedef enum e_time_code
-{
-	SECOND,
-	MILLISEC,
-	MICROSEC,
-}	t_time_code;
-
-typedef pthread_mutex_t	t_mtx;
 typedef struct s_philo	t_philo;
 
 typedef struct s_table
@@ -129,53 +104,41 @@ struct s_philo
 	t_table		*table;
 };
 
-/* entrance function */
+/* main function */
 void	check(int ac, char **av);
+void	star_and_run_program(t_table *table, char **av);
+bool	start_process(t_table *table);
+bool	start_monitor(t_table *table);
+void	wait_and_finish(t_table *table);
 void	parser_input(t_table *table, char **av);
 void	init(t_table *table);
 void	run(int ac, char **av);
 void	clean(t_table *table);
+void	*monitor_count(void *table_v);
 
 /* utils */
 long	ft_atol(const char *nptr);
-long	gettime(t_time_code time_code);
-void	precise_usleep(long usec, t_table *table);
-void	sem_exit(char *msg, sem_t *to_close, sem_t *to_close2);
-
-/* wrapper functions */
-void	*safe_malloc(size_t bytes);
-void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
-			void *data, t_code opcode);
-void	safe_mtx_handle(sem_t *mutex, t_code opcode, char *name);
-
-/* function to error */
+long	gettime(void);
+char	*get_message(int type);
+void	display_message(t_philo *philo, int type);
+void	clean_forks(t_philo *philo);
+void	take_forks(t_philo *philo);
+sem_t	*ft_sem_open(char const *name, int value);
 void	error_exit(const char *message);
+void	*safe_malloc(size_t bytes);
 
-/* get, set and verify functions */
-void	set_bool(sem_t *mtx, bool *dst, bool value);
-bool	get_bool(sem_t *mtx, bool *value);
-void	set_long(sem_t *mtx, long *dst, long value);
-long	get_long(sem_t *mtx, long *value);
-bool	simulation_status(t_table *table);
+/* routine function */
+void	eat(t_philo *philo);
+void	*monitor(void *philo_v);
+void	*monitor_count(void * table_v);
+void	routine(t_philo *philo_v);
 
-/* dinner */
-void	wait_all_threads(t_table *table);
-void	dinner_start(t_table *table);
-void	*dinner_simulation(void *data);
-void	write_status(t_st status, t_philo *philo, bool debug);
-void	thinking(t_philo *philo, bool pre_simulation);
-void	*lonely_day(void *arg);
+/* handle string functions */
+int		ft_strcpy(char *dst, const char *src);
+char	*make_semaphore_name(char const *base, char *buffer, int position);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putnbr_fd(long nb, int fd);
+size_t	ft_strlen(char *str);
 
-/* syncro */
-void	increase_long(sem_t *mutex, long *value);
-void	unsync_philos(t_philo *philo);
-bool	threads_running(sem_t *mtx, long *threads, long ph_nb);
-void	*monitor(void *data);
-
-/* str */
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_itoa(int n);
-char	*ft_strdup(const char *s);
-char	*ft_strmerge(char *s1, char *s2);
 
 #endif //!PHILO_H

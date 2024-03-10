@@ -6,12 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:46:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 23:04:15 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 23:21:08 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-#include <semaphore.h>
 
 int	ft_strcpy(char *dst, const char *src)
 {
