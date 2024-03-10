@@ -1,4 +1,4 @@
-# program name #
+# program name # program name #
 NAME = philo_bonus
 
 # shell #
@@ -45,10 +45,10 @@ DINNER = $(SRC)/dinner/
 UTILS = $(SRC)/utils/
 
 # files mandatory #
-CFILES = $(addprefix $(MAIN), main.c first_check.c init.c parser.c)
-CFILES += $(addprefix $(DINNER), dinner.c monitor.c synchro.c write.c)
-CFILES += $(addprefix $(UTILS), ft_atoi.c utils.c wrapper_functions.c get_set.c cleanup.c)
-CFILES += $(addprefix $(UTILS), ft_itoa.c handling_str.c ft_strjoin.c)
+CFILES = $(addprefix $(MAIN), main.c first_check.c parser.c)
+# CFILES += $(addprefix $(DINNER), dinner.c monitor.c synchro.c write.c)
+CFILES += $(addprefix $(UTILS), ft_atoi.c utils.c wrapper_functions.c cleanup.c)
+CFILES += $(addprefix $(UTILS), ft_itoa.c)
 
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
 VAL_TXT = valgrind-out.txt

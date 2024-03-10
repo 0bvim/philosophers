@@ -6,36 +6,38 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:38:01 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/06 17:42:17 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 00:56:38 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 #include <semaphore.h>
 
-/**
- * @brief Cleans up resources allocated for the dining table.
- *
- * This function releases resources allocated for the dining table, including
- * destroying mutexes associated with philosophers and the table itself, and
- * freeing memory allocated for forks and philosophers.
- *
- * @param table A pointer to the table structure to be cleaned up.
- */
 void	clean(t_table *table)
 {
+	int		i;
+	char	semaphore[255];
 
-	safe_mtx_handle(table->write_mtx, DESTROY, NULL);
-	safe_mtx_handle(table->table_mtx, DESTROY, NULL);
-	free(table->fork);
-	free(table->philo);
-}
-
-void	sem_exit(char *msg, sem_t *to_close, sem_t *to_close2)
-{
-	if (to_close)
-		sem_close(to_close);
-	if (to_close2)
-		sem_close(to_close2);
-	error_exit(msg);
+	sem_unlink(SEM_FORK);
+	sem_unlink(SEM_WRITE);
+	sem_unlink(SEM_DEAD);
+	sem_unlink(SEM_DEADW);
+	sem_close(table->fork_mtx);
+	sem_close(table->write_mtx);
+	sem_close(table->dead_write_mtx);
+	sem_close(table->have_died_mtx);
+	if (table->philo)
+	{
+		i = -1;
+		while (++i < table->ph_nb)
+		{
+			sem_close(table->philo[i].mutex);
+			sem_close(table->philo[i].eat_count_mtx);
+			make_semaphore_name(SEM_PHILO, (char*)semaphore, i);
+			sem_unlink(semaphore);
+			make_semaphore_name(SEM_PHILOEAT, (char*)semaphore, i);
+			sem_unlink(semaphore);
+		}
+		free(table->philo);
+	}
 }
