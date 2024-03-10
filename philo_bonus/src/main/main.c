@@ -6,11 +6,14 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 23:19:08 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 00:29:24 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+#include <semaphore.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -118,9 +121,11 @@ void	take_forks(t_philo *philo)
 
 void	eat(t_philo *philo)
 {
+
 	sem_wait(philo->mutex);
 	philo->is_eating = 1;
 	philo->last_meal = get_time();
+	printf("cheguei aqui\n\n");
 	philo->limit = philo->last_meal + philo->table->die;
 	display_message(philo, EATING);
 	usleep(philo->table->eat * 1e3);
@@ -169,14 +174,15 @@ void	routine(t_philo *philo_v)
 		clean_forks(philo);
 		display_message(philo, THINKING);
 	}
+	exit (EXIT_SUCCESS);
 }
 
 bool	start_process(t_table *table)
 {
 	int	i;
 	
-	i = -1;
 	table->start = get_time();
+	i = -1;
 	while (++i < table->ph_nb)
 	{
 		table->philo[i].pid = fork();
@@ -193,6 +199,7 @@ void	wait_and_finish(t_table *table)
 {
 	int	i;
 
+	sem_wait(table->have_died_mtx);
 	i = 0;
 	while (i < table->ph_nb)
 		kill(table->philo[i++].pid, SIGKILL);
@@ -205,7 +212,7 @@ bool	start_monitor(t_table *table)
 
 	if (table->max_meals > 0)
 	{
-		if (pthread_create(&tid, NULL, &monitor_count, (void*)table)!= 0)
+		if (pthread_create(&tid, NULL, &monitor_count, (void*)table) != 0)
 			return (true);
 		pthread_detach(tid);
 	}

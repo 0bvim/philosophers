@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:46:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 23:21:08 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 00:29:03 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	philo_init(t_table *table)
 		table->philo[i].table = table;
 		make_semaphore_name(SEM_PHILO, (char*)semaphore, i);
 		sem_unlink(semaphore);
-		table->philo[i].mutex = ft_sem_open(semaphore, 0);
+		table->philo[i].mutex = ft_sem_open(semaphore, 1);
 		if (table->philo[i].mutex == SEM_FAILED)
 			error_exit("Fail to open semaphore.");
 		make_semaphore_name(SEM_PHILOEAT, (char*)semaphore, i);
