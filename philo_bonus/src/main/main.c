@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 21:35:26 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 22:28:21 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,40 @@ void	*monitor_count(void * table_v)
 	return ((void*)false);
 }
 
-void	routine(t_philo *philo)
+void	clean_forks(t_philo *philo)
 {
-	//TODO: Philo function
-	//remember to insert exit at the end;
-	(void)philo;
+	display_message(philo, SLEEPING);
+	sem_post(philo->table->fork_mtx);
+	sem_post(philo->table->fork_mtx);
+	usleep(philo->table->sleep * 1e3);
+}
+
+void	take_forks(t_philo *philo)
+{
+	sem_wait(philo->table->fork_mtx);
+	display_message(philo, FORK);
+	sem_wait(philo->table->fork_mtx);
+	display_message(philo, FORK);
+}
+
+void	routine(t_philo *philo_v)
+{
+	t_philo	*philo;
+	pthread_t	tid;
+
+	philo = (t_philo*)philo_v;
+	philo->last_meal = get_time();
+	philo->limit = philo->last_meal + philo->table->die;
+	if (pthread_create(&tid, NULL, &monitor, philo), != 0)
+		exit(EXIT_FAILURE);
+	pthread_detach(tid);
+	while (true)
+	{
+		take_forks(philo);
+		eat(philo);
+		clean_forks(philo);
+		display_message(philo, THINKING);
+	}
 }
 
 bool	start_process(t_table *table)
