@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 01:13:12 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 01:21:43 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ void	wait_and_finish(t_table *table)
 {
 	int	i;
 
+	sem_wait(table->have_died_mtx);
 	i = 0;
 	while (i < table->ph_nb)
 		kill(table->philo[i++].pid, SIGKILL);
@@ -233,7 +234,6 @@ int	main(int ac, char **av)
 
 	check(ac, av);
 	star_and_run_program(&table, av);
-	sem_wait(table.have_died_mtx);
 	wait_and_finish(&table);
 	return (EXIT_SUCCESS);
 }
