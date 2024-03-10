@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 19:45:35 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:50:29 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	clean_forks(t_philo *philo)
 	display_message(philo, SLEEPING);
 	sem_post(philo->table->fork_mtx);
 	sem_post(philo->table->fork_mtx);
-	usleep(philo->table->sleep);
+	usleep(philo->table->sleep * 1000);
 }
 
 void	take_forks(t_philo *philo)
