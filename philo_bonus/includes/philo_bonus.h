@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 15:32:07 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:47:07 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ typedef enum e_philo_status
 {
 	EATING,
 	SLEEPING,
+	FORK,
 	THINKING,
-	TAKE_FIRST_FORK,
-	TAKE_SECOND_FORK,
 	DIED,
+	FULL,
 }	t_st;
 
 /* MUTEX HANDLE */

@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:46:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 15:42:26 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:59:02 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,4 @@ void	parser_input(t_table *table, char **av)
 	table->philo = (t_philo*)safe_malloc(sizeof(*(table->philo)) * table->ph_nb);
 	//TODO: init philos
 	//TODO: init semaphores
-		
-
 }
