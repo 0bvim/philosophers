@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 20:47:07 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 22:34:19 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@
 # define LRED "\033[91m"
 
 /* semaphores definitions */
-# define S_FORKS "/forks"
-# define S_MEAL "/meal"
-# define S_PRINT "/print"
-# define S_DEATH "/lock_death"
+# define SEM_FORK "pSemaphoreFork"
+# define SEM_WRITE "pSemaphoreWrite"
+# define SEM_DEAD "pSemaphoreDead"
+# define SEM_DEADW "pSemaphoreDeadWrite"
+# define SEM_PHILO "pSemaphorePhilo"
+# define SEM_PHILOEAT "pSemaphorePhiloEat"
 
 /* ANOTHER ENUMS */
 enum	e_philo
