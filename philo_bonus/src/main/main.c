@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 00:53:21 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 01:13:12 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,13 +123,13 @@ void	eat(t_philo *philo)
 {
 
 	sem_wait(philo->mutex);
-	philo->is_eating = 1;
+	philo->is_eating = true;
 	philo->last_meal = get_time();
 	philo->limit = philo->last_meal + philo->table->die;
 	display_message(philo, EATING);
 	usleep(philo->table->eat / 1000);
 	philo->eat_count++;
-	philo->is_eating = 0;
+	philo->is_eating = false;
 	sem_post(philo->mutex);
 	sem_post(philo->eat_count_mtx);
 }
@@ -198,7 +198,6 @@ void	wait_and_finish(t_table *table)
 {
 	int	i;
 
-	sem_wait(table->have_died_mtx);
 	i = 0;
 	while (i < table->ph_nb)
 		kill(table->philo[i++].pid, SIGKILL);
@@ -234,6 +233,7 @@ int	main(int ac, char **av)
 
 	check(ac, av);
 	star_and_run_program(&table, av);
+	sem_wait(table.have_died_mtx);
 	wait_and_finish(&table);
 	return (EXIT_SUCCESS);
 }
