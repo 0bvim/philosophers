@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 00:29:24 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 00:53:21 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ long	get_time(void)
 	static struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * (long)1e3) + (tv.tv_usec / 1e3));
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
 char	*get_message(int type)
@@ -108,7 +108,7 @@ void	clean_forks(t_philo *philo)
 	display_message(philo, SLEEPING);
 	sem_post(philo->table->fork_mtx);
 	sem_post(philo->table->fork_mtx);
-	usleep(philo->table->sleep * 1e3);
+	usleep(philo->table->sleep / 1000);
 }
 
 void	take_forks(t_philo *philo)
@@ -125,10 +125,9 @@ void	eat(t_philo *philo)
 	sem_wait(philo->mutex);
 	philo->is_eating = 1;
 	philo->last_meal = get_time();
-	printf("cheguei aqui\n\n");
 	philo->limit = philo->last_meal + philo->table->die;
 	display_message(philo, EATING);
-	usleep(philo->table->eat * 1e3);
+	usleep(philo->table->eat / 1000);
 	philo->eat_count++;
 	philo->is_eating = 0;
 	sem_post(philo->mutex);
