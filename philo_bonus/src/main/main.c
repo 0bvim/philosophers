@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 01:21:43 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:45:35 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ long	get_time(void)
 	static struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+	return ((tv.tv_sec * (long)1000) + (tv.tv_usec / (long)1000));
 }
 
 char	*get_message(int type)
@@ -108,7 +108,7 @@ void	clean_forks(t_philo *philo)
 	display_message(philo, SLEEPING);
 	sem_post(philo->table->fork_mtx);
 	sem_post(philo->table->fork_mtx);
-	usleep(philo->table->sleep / 1000);
+	usleep(philo->table->sleep);
 }
 
 void	take_forks(t_philo *philo)
@@ -127,7 +127,7 @@ void	eat(t_philo *philo)
 	philo->last_meal = get_time();
 	philo->limit = philo->last_meal + philo->table->die;
 	display_message(philo, EATING);
-	usleep(philo->table->eat / 1000);
+	usleep(philo->table->eat * 1000);
 	philo->eat_count++;
 	philo->is_eating = false;
 	sem_post(philo->mutex);
@@ -198,7 +198,6 @@ void	wait_and_finish(t_table *table)
 {
 	int	i;
 
-	sem_wait(table->have_died_mtx);
 	i = 0;
 	while (i < table->ph_nb)
 		kill(table->philo[i++].pid, SIGKILL);
@@ -234,6 +233,7 @@ int	main(int ac, char **av)
 
 	check(ac, av);
 	star_and_run_program(&table, av);
+	sem_wait(table.have_died_mtx);
 	wait_and_finish(&table);
 	return (EXIT_SUCCESS);
 }
