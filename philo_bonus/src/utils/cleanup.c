@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:38:01 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 22:37:20 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 22:38:08 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	clean(t_table *table)
 	sem_unlink(SEM_DEADW);
 	if (table->philo)
 	{
-		i = 0;
-		while (i < table->ph_nb)
+		i = -1;
+		while (++i < table->ph_nb)
 		{
 			make_semaphore_name(SEM_PHILO, (char*)semaphore, i);
 			sem_unlink(semaphore);
-			make_semaphore_name(SEM_PHILOEAT, (char*)semaphore, i++);
+			make_semaphore_name(SEM_PHILOEAT, (char*)semaphore, i);
 			sem_unlink(semaphore);
 		}
 		free(table->philo);
