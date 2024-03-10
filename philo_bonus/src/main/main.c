@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/09 22:28:21 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/09 22:30:14 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,20 @@ void	take_forks(t_philo *philo)
 	display_message(philo, FORK);
 }
 
+void	eat(t_philo *philo)
+{
+	sem_wait(philo->mutex);
+	philo->is_eating = 1;
+	philo->last_meal = get_time();
+	philo->limit = philo->last_meal + philo->table->die;
+	display_message(philo, EATING);
+	usleep(philo->table->eat * 1e3);
+	philo->eat_count++;
+	philo->is_eating = 0;
+	sem_post(philo->mutex);
+	sem_post(philo->eat_count_mtx);
+}
+
 void	routine(t_philo *philo_v)
 {
 	t_philo	*philo;
@@ -132,7 +146,7 @@ void	routine(t_philo *philo_v)
 	philo = (t_philo*)philo_v;
 	philo->last_meal = get_time();
 	philo->limit = philo->last_meal + philo->table->die;
-	if (pthread_create(&tid, NULL, &monitor, philo), != 0)
+	if (pthread_create(&tid, NULL, &monitor, philo) != 0)
 		exit(EXIT_FAILURE);
 	pthread_detach(tid);
 	while (true)
