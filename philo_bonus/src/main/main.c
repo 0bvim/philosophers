@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 19:50:29 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:52:53 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	clean_forks(t_philo *philo)
 	display_message(philo, SLEEPING);
 	sem_post(philo->table->fork_mtx);
 	sem_post(philo->table->fork_mtx);
-	usleep(philo->table->sleep * 1000);
+	usleep(philo->table->sleep * 1e3);
 }
 
 void	take_forks(t_philo *philo)
@@ -127,7 +127,7 @@ void	eat(t_philo *philo)
 	philo->last_meal = get_time();
 	philo->limit = philo->last_meal + philo->table->die;
 	display_message(philo, EATING);
-	usleep(philo->table->eat * 1000);
+	usleep(philo->table->eat * 1e3);
 	philo->eat_count++;
 	philo->is_eating = false;
 	sem_post(philo->mutex);
