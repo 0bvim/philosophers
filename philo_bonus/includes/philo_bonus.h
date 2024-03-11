@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 20:09:07 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/11 01:24:24 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	take_forks(t_philo *philo);
 sem_t	*ft_sem_open(char const *name, int value);
 void	error_exit(const char *message);
 void	*safe_malloc(size_t bytes);
+long	get_time(void);
 
 /* routine function */
 void	eat(t_philo *philo);

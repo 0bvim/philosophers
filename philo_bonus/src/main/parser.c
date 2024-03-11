@@ -6,36 +6,12 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:46:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 20:09:47 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/11 01:16:14 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	ft_strcpy(char *dst, const char *src)
-{
-	int	i;
-
-	i = -1;
-	while (src[++i])
-		dst[i] = src[i];
-	dst[i] = 0;
-	return (i);
-}
-
-char	*make_semaphore_name(char const *base, char *buffer, int position)
-{
-	int	i;
-
-	i = ft_strcpy(buffer, base);
-	while (position > 0)
-	{
-		buffer[i++] = (position % 10) + '0';
-		position /= 10;
-	}
-	buffer[i] = 0;
-	return (buffer);
-}
 
 sem_t	*ft_sem_open(char const *name, int value)
 {
