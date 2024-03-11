@@ -6,14 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 20:10:00 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:49:33 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-#include <semaphore.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 void	ft_putchar_fd(char c, int fd)
 {
