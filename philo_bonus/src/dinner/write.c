@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:40:42 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/11 01:16:06 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/11 02:01:46 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 char	*get_message(int type)
 {
 	if (type == EATING)
-		return (" is eating\n");
+		return (YLW" is eating\n"RST);
 	else if (type == SLEEPING)
-		return (" is sleeping\n");
+		return (GRN" is sleeping\n"RST);
 	else if (type == FORK)
-		return (" has taken a fork\n");
+		return (RED" has taken a fork\n"RST);
 	else if (type == THINKING)
-		return (" is thinking\n");
+		return (ORG" is thinking\n"RST);
 	else if (type == FULL)
-		return ("must eat count reached\n");
-	return (" died\n");
+		return (CYA"must eat count reached\n"RST);
+	return (BLU" died\n"RST);
 }
 
 void	display_message(t_philo *philo, int type)

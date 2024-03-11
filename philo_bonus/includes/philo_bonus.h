@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/11 01:24:24 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/11 01:59:14 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,5 @@ char	*make_semaphore_name(char const *base, char *buffer, int position);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(long nb, int fd);
 size_t	ft_strlen(char *str);
-
 
 #endif //!PHILO_H
