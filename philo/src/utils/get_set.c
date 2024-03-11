@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 00:55:56 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 03:24:27 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:29:03 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,12 @@ long	get_long(t_mtx *mtx, long *value)
 /**
  * @brief Checks the status of the simulation.
  *
- * This function checks the status of the simulation by retrieving the value of the end flag
+ * This function checks the status of the simulation by retrieving the value of
+ * the end flag
  * from the table structure.
  *
- * @param table A pointer to the table structure containing information about the dining philosophers.
+ * @param table A pointer to the table structure containing information about
+ * the dining philosophers.
  * @return true if the simulation has ended, false otherwise.
  */
 bool	simulation_status(t_table *table)

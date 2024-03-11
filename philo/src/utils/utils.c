@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:11:06 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/02 03:27:25 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:28:35 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,14 @@ void	error_exit(const char *message)
 /**
  * @brief Sleeps for a precise amount of time.
  *
- * This function sleeps for a precise amount of time specified in microseconds, ensuring accuracy
- * by continuously checking the elapsed time until the desired duration is reached.
+ * This function sleeps for a precise amount of time specified in microseconds,
+ * ensuring accuracy
+ * by continuously checking the elapsed time until the desired duration is
+ * reached.
  *
  * @param usec The duration to sleep in microseconds.
- * @param table A pointer to the table structure containing information about the dining philosophers.
+ * @param table A pointer to the table structure containing information about
+ * the dining philosophers.
  */
 void	precise_usleep(long usec, t_table *table)
 {
