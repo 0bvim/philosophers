@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:43:36 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/11 01:59:14 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/11 02:16:25 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ long	get_time(void);
 /* routine function */
 void	eat(t_philo *philo);
 void	*monitor(void *philo_v);
-void	*monitor_count(void * table_v);
+void	*monitor_count(void *table_v);
 void	routine(t_philo *philo_v);
 
 /* handle string functions */

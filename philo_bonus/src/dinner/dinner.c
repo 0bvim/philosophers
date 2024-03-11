@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:18:44 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/11 01:17:17 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/11 02:15:44 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	routine(t_philo *philo_v)
 {
-	t_philo	*philo;
+	t_philo		*philo;
 	pthread_t	tid;
 
-	philo = (t_philo*)philo_v;
+	philo = (t_philo *)philo_v;
 	philo->last_meal = get_time();
 	philo->limit = philo->last_meal + philo->table->die;
 	if (pthread_create(&tid, NULL, &monitor, philo) != 0)
@@ -51,7 +51,6 @@ void	take_forks(t_philo *philo)
 
 void	eat(t_philo *philo)
 {
-
 	sem_wait(philo->mutex);
 	philo->is_eating = true;
 	philo->last_meal = get_time();
