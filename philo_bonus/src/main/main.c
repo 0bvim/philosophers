@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 01:27:29 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/10 21:49:33 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:10:10 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	*monitor(void *philo_v)
 			return ((void*)0);
 		}
 		sem_post(philo->mutex);
-		usleep(1000);
+		usleep(100);
 	}
 	return ((void*)0);
 }
