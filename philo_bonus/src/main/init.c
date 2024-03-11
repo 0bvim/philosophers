@@ -6,7 +6,7 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:37:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/11 01:39:45 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/11 02:04:07 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	start_process(t_table *table)
 {
 	int	i;
-	
+
 	table->start = get_time();
 	i = -1;
 	while (++i < table->ph_nb)
@@ -46,7 +46,7 @@ bool	start_monitor(t_table *table)
 
 	if (table->max_meals > 0)
 	{
-		if (pthread_create(&tid, NULL, &monitor_count, (void*)table) != 0)
+		if (pthread_create(&tid, NULL, &monitor_count, (void *)table) != 0)
 			return (true);
 		pthread_detach(tid);
 	}

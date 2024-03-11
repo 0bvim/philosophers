@@ -6,12 +6,11 @@
 /*   By: vde-frei <vde-frei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 23:46:20 by vde-frei          #+#    #+#             */
-/*   Updated: 2024/03/11 01:16:14 by vde-frei         ###   ########.fr       */
+/*   Updated: 2024/03/11 02:08:58 by vde-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-
 
 sem_t	*ft_sem_open(char const *name, int value)
 {
@@ -31,12 +30,12 @@ static void	philo_init(t_table *table)
 		table->philo[i].left_fork = i;
 		table->philo[i].right_fork = (i + 1) % table->ph_nb;
 		table->philo[i].table = table;
-		make_semaphore_name(SEM_PHILO, (char*)semaphore, i);
+		make_semaphore_name(SEM_PHILO, (char *)semaphore, i);
 		sem_unlink(semaphore);
 		table->philo[i].mutex = ft_sem_open(semaphore, 1);
 		if (table->philo[i].mutex == SEM_FAILED)
 			error_exit("Fail to open semaphore.");
-		make_semaphore_name(SEM_PHILOEAT, (char*)semaphore, i);
+		make_semaphore_name(SEM_PHILOEAT, (char *)semaphore, i);
 		sem_unlink(semaphore);
 		table->philo[i].eat_count_mtx = ft_sem_open(semaphore, 0);
 		if (table->philo[i].eat_count_mtx == SEM_FAILED)
@@ -77,7 +76,8 @@ void	parser_input(t_table *table, char **av)
 	else
 		table->max_meals = -1;
 	table->fork_mtx = NULL;
-	table->philo = (t_philo*)safe_malloc(sizeof(*(table->philo)) * table->ph_nb);
+	table->philo = (t_philo *)safe_malloc(sizeof(*(table->philo))
+			* table->ph_nb);
 	philo_init(table);
 	init_semaphores(table);
 }
