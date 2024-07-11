@@ -9,6 +9,8 @@ This repository contains an implementation of the Dining Philosophers Problem in
 - [How to Use](#how-to-use)
 - [License](./LICENSE)
 
+---
+
 ## Introduction
 
 The Dining Philosophers Problem is a classic synchronization problem in computer science, designed to illustrate the challenges of concurrent programming. In this scenario, a number of philosophers sit around a dining table, each with a plate of spaghetti and a fork between each pair of adjacent philosophers. The philosophers spend their time either eating or thinking. To eat, a philosopher must acquire two forks—one from their left and one from their right. The challenge lies in preventing deadlocks and resource contention, ensuring that each philosopher can eat without causing conflicts with their neighbors.
