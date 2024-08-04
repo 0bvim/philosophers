@@ -40,4 +40,4 @@ To run the program, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Navigate to the directory containing the source code.
-3. Compile the program using `make` and then `./philo <number_of_philos> <time_to_die> <time_to_eat> <time_to_sleep>`
+3. Compile the program using `make` and then `./philo <number_of_philos> <time_to_die> <time_to_eat> <time_to_sleep> (optional)<times_to_eat>`
